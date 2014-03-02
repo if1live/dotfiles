@@ -1,0 +1,8 @@
+# NAS
+//192.168.0.99/media	/mnt/media	cifs	credentials=/root/.smbcredentials,iocharset=utf8,file_mode=0444,dir_mode=0444,ro,noauto 0 0
+//192.168.0.99/if1live	/mnt/if1live	cifs	credentials=/root/.smbcredentials,iocharset=utf8,file_mode=0777,dir_mode=0777,noauto 0 0
+//192.168.0.99/nyaruko	/mnt/nyaruko	cifs	credentials=/root/.smbcredentials,iocharset=utf8,file_mode=0777,dir_mode=0777,noauto 0 0
+
+# ntfs
+/dev/sdb2	/mnt/share	ntfs-3g		uid=sora,gid=sora,dmask=022,fmask=133 0 0
+/dev/sdc1	/mnt/data	ntfs-3g		uid=sora,gid=sora,dmask=022,fmask=133 0 0

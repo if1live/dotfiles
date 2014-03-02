@@ -1,0 +1,10 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+[user]
+	name = if1live
+	email = libsora25@gmail.com
+[color]
+	diff = auto
+[push]
+	default = simple
+
