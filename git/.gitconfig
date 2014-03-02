@@ -5,6 +5,7 @@
 	email = libsora25@gmail.com
 [color]
 	diff = auto
+	ui = true
 [push]
 	default = simple
 
