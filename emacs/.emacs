@@ -85,7 +85,7 @@
  (lambda ()
   (setq tab-width 2)
   (setq sgml-basic-offset 2)
-  (setq indent-tabs-mode t)))
+  (setq indent-tabs-mode nil)))
 
 
 ;; javascript
