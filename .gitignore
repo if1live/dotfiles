@@ -2,3 +2,5 @@ emacs/.emacs.d/backup
 emacs/.emacs.d/eshell
 emacs/.emacs.d/el-get
 emacs/.emacs.d/auto-save-list
+
+*.swp
