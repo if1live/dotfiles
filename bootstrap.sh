@@ -2,9 +2,6 @@
 
 
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
-#echo "The script you are running has basename `basename $0`, dirname `dirname $0`"
-#echo "The present working directory is `pwd`
-
 CURR_PWD=`dirname $0`
 
 function remove_old() {
@@ -16,6 +13,8 @@ function remove_old() {
 		.vimrc
 		.zshrc
 		.config/awesome
+		.gtkrc-2.0
+		.gtkrc.mine
 	)
 	for target in ${TARGET_LIST[@]}
 	do
@@ -40,6 +39,9 @@ function run_symbolic_link() {
 		vim/.vimrc ~
 		zsh/.zshrc ~
 		awesome ~/.config/
+		gtk/.gtkrc-2.0 ~
+		gtk/.gtkrc.mine ~
+
 	)
 	array_length=${#DATA_LIST[@]}
 	for (( i=0 ; i < $array_length / 2 ; i++ ));
