@@ -11,6 +11,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+local home_dir = os.getenv("HOME")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -40,7 +41,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
-beautiful.init("/home/sora/.config/awesome/theme/theme.lua")
+beautiful.init(home_dir.."/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
@@ -74,13 +75,17 @@ local layouts =
 
 -- {{{ Wallpaper
 if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        -- gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-        if s < 2 then
-            gears.wallpaper.fit("/home/sora/.config/awesome/theme/v-wallpaper.png", s)
-        else
-            gears.wallpaper.fit("/home/sora/.config/awesome/theme/h-wallpaper.jpg", s)
+    if screen.count() == 2 then
+        for s = 1, screen.count() do
+            -- gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+            if s < 2 then
+                gears.wallpaper.fit(home_dir.."/.config/awesome/theme/v-wallpaper.png", s)
+            else
+                gears.wallpaper.fit(home_dir.."/.config/awesome/theme/h-wallpaper.jpg", s)
+            end
         end
+    else
+        gears.wallpaper.fit(home_dir.."/.config/awesome/theme/4-3-wallpaper.jpg", s)
     end
 end
 -- }}}
@@ -442,3 +447,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- caps lock - ctrl swap
+-- http://askubuntu.com/questions/149971/how-do-you-swap-or-remap-control-and-caps-lock-keys-in-xubuntu
+awful.util.spawn_with_shell("/usr/bin/setxkbmap -option \"ctrl:nocaps\"")
