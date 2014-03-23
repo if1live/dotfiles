@@ -447,3 +447,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- caps lock - ctrl swap
+-- http://askubuntu.com/questions/149971/how-do-you-swap-or-remap-control-and-caps-lock-keys-in-xubuntu
+awful.util.spawn_with_shell("/usr/bin/setxkbmap -option \"ctrl:nocaps\"")
