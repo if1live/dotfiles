@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(current-language-environment "UTF-8")
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
+ '(show-paren-mode t))
 
 ;; 리눅스 한글 설정: 나눔고딕코딩
 ;; http://kiros33.blog.me/130138066686
@@ -92,6 +93,10 @@
 (setq indent-line-function 'insert-tab)
 
 ;; scheme
+(add-hook 'scheme-mode-hook
+  (lambda ()
+    (setq tab-width 2)
+    (setq indent-tabs-mode nil)))
 (add-to-list 'auto-mode-alist '("\\.rkt" . scheme-mode))
 
 
@@ -119,5 +124,4 @@
 ;; only show bad whitespace
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
 ;; This gives you a tab of 2 spaces
-(custom-set-variables '(coffee-tab-width 2))
-
+(setq coffee-tab-width 2)
