@@ -91,6 +91,9 @@
 (setq tab-stop-list (number-sequence 4 200 4))
 (setq indent-line-function 'insert-tab)
 
+;; scheme
+(add-to-list 'auto-mode-alist '("\\.rkt" . scheme-mode))
+
 
 ;; HTML
 (add-hook 'html-mode-hook
