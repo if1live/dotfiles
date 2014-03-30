@@ -93,7 +93,8 @@
 ;;(color-theme-dark-laptop)
 ;;(color-theme-euphoria)
 ;;(color-theme-arjen)
-;;(color-theme-lethe)
+(color-theme-lethe)
+;;(color-theme-hober)
 ;; for window color
 ;;(color-theme-clarity)
 ;; for linux console color
