@@ -7,16 +7,23 @@
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t))
 
+;; reference
+;; http://dotfiles.org/~battlemidget/.emacs
+
 ;; 리눅스 한글 설정: 나눔고딕코딩
 ;; http://kiros33.blog.me/130138066686
 (if (eq system-type 'gnu/linux)
     (progn
-      (set-fontset-font "fontset-default" 'korean-ksc5601 "-unknown-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
+      (set-fontset-font "fontset-default"
+                        'korean-ksc5601
+                        "-unknown-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
       (setq initial-frame-alist '((top . 10) (left . 100)))))
 
 ;; 한영키 바꿔치기. 콘솔에서는 필요없지만 GUI사용할때 대비
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 (global-set-key (kbd "<S-kana>") 'toggle-input-method)
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 
@@ -93,6 +100,12 @@
 ;;(color-theme-digital-ofs1)
 
 
+;; Show column number on the status line
+(column-number-mode t)
+
+;; new lines at the end
+(setq next-line-add-newlines t)
+
 ;; default indent
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
@@ -150,3 +163,17 @@
     (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
     ;; This gives you a tab of 2 spaces
     (setq coffee-tab-width 2)))
+
+;; vcs
+(setq
+ ;; don't show annoing startup msg
+ inhibit-startup-message t
+ ;; NO annoing backups
+ make-backup-files nil
+ ;; make sure file ends with NEWLINE
+ require-final-newline t
+ ;; follow symlinks and don't ask
+ vc-follow-symlinks t
+ ;; display time in the modeline
+ display-time-24hr-format t
+ display-time-day-and-date t)
