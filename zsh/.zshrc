@@ -63,10 +63,10 @@ fi
 export VISUAL=$EDITOR
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+#export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # ruby
 # http://gorails.com/setup/ubuntu/13.10
@@ -81,5 +81,14 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # added by travis gem
 [ -f /home/sora/.travis/travis.sh ] && source /home/sora/.travis/travis.sh
+
+if [[ `whoami` -eq "haruna" ]]; then
+  echo "Env=> work"
+  alias ssh-test="ssh if1live@ec2-54-248-222-118.ap-northeast-1.compute.amazonaws.com"
+  alias ssh-others="ssh ubuntu@ec2-54-248-254-72.ap-northeast-1.compute.amazonaws.com"
+else
+  echo "Env=> home"
+  alias ssh-pi="ssh pi@192.168.0.16"
+fi
 
 
