@@ -1,7 +1,4 @@
-emacs/.emacs.d/backup
-emacs/.emacs.d/eshell
-emacs/.emacs.d/el-get
-emacs/.emacs.d/auto-save-list
+emacs/.emacs.d
 
 *.swp
 *.bak
