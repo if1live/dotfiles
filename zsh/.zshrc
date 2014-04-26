@@ -82,7 +82,7 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 # added by travis gem
 [ -f /home/sora/.travis/travis.sh ] && source /home/sora/.travis/travis.sh
 
-if [[ `whoami` -eq "haruna" ]]; then
+if [[ $USER == "haruna" ]]; then
   echo "Env=> work"
   alias ssh-test="ssh if1live@ec2-54-248-222-118.ap-northeast-1.compute.amazonaws.com"
   alias ssh-others="ssh ubuntu@ec2-54-248-254-72.ap-northeast-1.compute.amazonaws.com"
