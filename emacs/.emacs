@@ -48,6 +48,7 @@
 ;; scheme-complete
 ;; coffee-mode
 ;; color-theme
+;; rainbow-delimiters
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -106,6 +107,11 @@
 
 ;; new lines at the end
 (setq next-line-add-newlines t)
+
+;; raindow-delimiters
+(require 'rainbow-delimiters)
+;; enable in all programming-related modes
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; default indent
 (setq-default indent-tabs-mode t)
