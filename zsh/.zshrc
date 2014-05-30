@@ -45,7 +45,7 @@ HIST_STAMPS="yyyy/mm/dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github node npm pip python grunt)
+plugins=(git github node npm pip python grunt git-flow fabric debian coffee)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,8 +84,6 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 if [[ $USER == "haruna" ]]; then
   echo "Env=> work"
-  alias ssh-test="ssh if1live@ec2-54-248-222-118.ap-northeast-1.compute.amazonaws.com"
-  alias ssh-others="ssh ubuntu@ec2-54-248-254-72.ap-northeast-1.compute.amazonaws.com"
 else
   echo "Env=> home"
   alias ssh-pi="ssh pi@192.168.0.16"
