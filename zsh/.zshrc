@@ -51,8 +51,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/sora/.rbenv/plugins/ruby-build/bin:/home/sora/.rbenv/shims:/home/sora/.rbenv/bin:/home/sora/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/home/sora/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -69,18 +69,11 @@ export ARCHFLAGS="-arch x86_64"
 #export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # ruby
-# http://gorails.com/setup/ubuntu/13.10
-# git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-# rbenv install 2.1.0
-# rbenv global 2.1.0
-# ruby -v
+# http://brightbox.com/blog/2014/01/09/ruby-2-1-ubuntu-packages/
+# use ppa
 
 # added by travis gem
-[ -f /home/sora/.travis/travis.sh ] && source /home/sora/.travis/travis.sh
+#[ -f /home/sora/.travis/travis.sh ] && source /home/sora/.travis/travis.sh
 
 if [[ $USER == "haruna" ]]; then
   echo "Env=> work"
@@ -88,5 +81,10 @@ else
   echo "Env=> home"
   alias ssh-pi="ssh pi@192.168.0.16"
 fi
+
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd......='cd ../../../../..'
 
 
