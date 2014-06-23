@@ -84,6 +84,11 @@
       kept-old-versions 5    ; and how many of the old
       )
 
+;; http://stackoverflow.com/questions/8246483/emacs-how-to-disable-files-creation
+(setq auto-save-file-name-transforms
+    `((".*" ,temporary-file-directory t)))
+
+
 ;; http://www.emacswiki.org/emacs/DeletingWhitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -114,16 +119,25 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; default indent
+;; http://emacswiki.org/emacs/IndentingC
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
 (setq tab-stop-list (number-sequence 4 200 4))
 (setq indent-line-function 'insert-tab)
 (setq lisp-body-indent 2)
+(setq c-default-style "stroustrup")
+(setq c-basic-offset 4)
 
+;; lisp
 (add-hook 'lisp-mode-hook
   (lambda ()
     (set (make-local-variable 'lisp-indent-function)
          'common-lisp-indent-function)))
+
+;; Python Hook
+(add-hook 'python-mode-hook '(lambda ()
+  (setq python-indent 4)))
+
 
 ;; emacs lisp
 ;; http://www.emacswiki.org/emacs/EmacsLispMode
@@ -148,8 +162,28 @@
   (lambda ()
     (setq tab-width 2)
     (setq sgml-basic-offset 2)
-    (setq indent-tabs-mode nil)))
+    (setq indent-tabs-mode nil)
+    ;; Default indentation is usually 2 spaces, changing to 4.
+    (set (make-local-variable 'sgml-basic-offset) 4)))
 (add-to-list 'auto-mode-alist '("\\.ejs" . html-mode))
+
+
+;; nxml indent
+;; http://www.dpawson.co.uk/relaxng/nxml/nxmlGeneral.html#d357e432
+(setq nxml-child-indent 4)
+
+
+;; PHP setting
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(setq php-mode-force-pear t)
+(add-hook 'php-mode-hook
+  (lambda ()
+    (setq c-default-style "stroustrup")
+    (setq indent-tabs-mode nil)
+    (setq tab-width 4)
+    (setq c-basic-indent 4)))
 
 
 ;; javascript
@@ -171,16 +205,23 @@
     ;; This gives you a tab of 2 spaces
     (setq coffee-tab-width 2)))
 
+
 ;; vcs
 (setq
- ;; don't show annoing startup msg
- inhibit-startup-message t
- ;; NO annoing backups
- make-backup-files nil
- ;; make sure file ends with NEWLINE
- require-final-newline t
- ;; follow symlinks and don't ask
- vc-follow-symlinks t
- ;; display time in the modeline
- display-time-24hr-format t
- display-time-day-and-date t)
+  ;; don't show annoing startup msg
+  inhibit-startup-message t
+  ;; NO annoing backups
+  make-backup-files nil
+  ;; make sure file ends with NEWLINE
+  require-final-newline t
+  ;; follow symlinks and don't ask
+  vc-follow-symlinks t
+  ;; display time in the modeline
+  display-time-24hr-format t
+  display-time-day-and-date t)
+
+
+;; jedi - python ide
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
