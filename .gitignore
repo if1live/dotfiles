@@ -1,4 +1,5 @@
 emacs/.emacs.d
+nabi/nabi.log
 
 *.swp
 *.bak
