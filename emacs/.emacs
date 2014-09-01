@@ -49,6 +49,7 @@
 ;; coffee-mode
 ;; color-theme
 ;; rainbow-delimiters
+;; jedi
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
