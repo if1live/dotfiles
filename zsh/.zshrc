@@ -65,6 +65,10 @@ export VISUAL=$EDITOR
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
+# python encoding
+export PYTHONIOENCODING="utf-8"
+
+
 # ssh
 #export SSH_KEY_PATH="~/.ssh/dsa_id"
 
