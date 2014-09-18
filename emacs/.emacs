@@ -50,6 +50,8 @@
 ;; color-theme
 ;; rainbow-delimiters
 ;; jedi
+;; markdown-mode
+;; rst-mode
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
