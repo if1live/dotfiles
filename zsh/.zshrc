@@ -37,7 +37,7 @@ export UPDATE_ZSH_DAYS=13
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to the command execution time stamp shown 
+# Uncomment following line if you want to the command execution time stamp shown
 # in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy/mm/dd"
@@ -68,16 +68,8 @@ export ARCHFLAGS="-arch x86_64"
 # python encoding
 export PYTHONIOENCODING="utf-8"
 
-
 # ssh
 #export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# ruby
-# http://brightbox.com/blog/2014/01/09/ruby-2-1-ubuntu-packages/
-# use ppa
-
-# added by travis gem
-#[ -f /home/sora/.travis/travis.sh ] && source /home/sora/.travis/travis.sh
 
 if [[ $USER == "haruna" ]]; then
   echo "Env=> work"
@@ -91,4 +83,14 @@ alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
 alias cd......='cd ../../../../..'
 
-
+# set up ruby at last
+# https://gorails.com/setup/ubuntu/14.04
+# sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
+# git clone git://github.com/sstephenson/rbenv.git .rbenv
+# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+eval "$(rbenv init -)" || 1
+#rbenv install 2.1.2
+#rbenv global 2.1.2
+#ruby -v
