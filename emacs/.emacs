@@ -30,6 +30,7 @@
 ;; set basic emacs mode path
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; el-get setting
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -97,12 +98,25 @@
 
 
 ;; color settings
+;; 2014-09-19 기준으로 gl-get + color-theme가 먹히지 않는다
+;; 원인은 color-theme의 기본 저장소인
+;; http://download.savannah.gnu.org/releases/color-theme/color-theme-6.6.0.zip
+;; 를 받을수 없기 때문인것으로 보인다. (Index는 접근되면서 파일받기는 안된다니...)
+;; 그래서 따로 구해서 저장소에 때려박았다.
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (require 'color-theme)
 (color-theme-initialize)
+
+(defun set-color-theme-dispatch-platform ()
+  (if (string= "windows-nt" system-type)
+    ;; for windows
+    (color-theme-euphoria)
+	;; other platform, like linux console + putty
+	(color-theme-lethe)))
+(set-color-theme-dispatch-platform)
+
 ;;(color-theme-dark-laptop)
-;;(color-theme-euphoria)
 ;;(color-theme-arjen)
-(color-theme-lethe)
 ;;(color-theme-hober)
 ;; for window color
 ;;(color-theme-clarity)
