@@ -1,11 +1,19 @@
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ ;; Show column number on the status line
+ '(column-number-mode t)
  '(current-language-environment "UTF-8")
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t))
+
+;; 윈도우 + 나눔고딕코딩
+(custom-set-faces
+ '(default ((t (
+    :family "NanumGothicCoding" 
+    :foundry "outline" 
+    :slant normal
+    :weight normal
+    :height 143
+    :width normal)))))
 
 ;; reference
 ;; http://dotfiles.org/~battlemidget/.emacs
@@ -108,7 +116,7 @@
 (color-theme-initialize)
 
 (defun set-color-theme-dispatch-platform ()
-  (if (string= "windows-nt" system-type)
+  (if (eq system-type 'windows-nt)
     ;; for windows
     (color-theme-euphoria)
 	;; other platform, like linux console + putty
@@ -123,9 +131,6 @@
 ;; for linux console color
 ;;(color-theme-digital-ofs1)
 
-
-;; Show column number on the status line
-(column-number-mode t)
 
 ;; new lines at the end
 (setq next-line-add-newlines t)
@@ -242,3 +247,4 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
+
