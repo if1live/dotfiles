@@ -119,8 +119,8 @@
   (if (eq system-type 'windows-nt)
     ;; for windows
     (color-theme-euphoria)
-	;; other platform, like linux console + putty
-	(color-theme-lethe)))
+    ;; other platform, like linux console + putty
+    (color-theme-lethe)))
 (set-color-theme-dispatch-platform)
 
 ;;(color-theme-dark-laptop)
