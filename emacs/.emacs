@@ -8,8 +8,8 @@
 ;; 윈도우 + 나눔고딕코딩
 (custom-set-faces
  '(default ((t (
-    :family "NanumGothicCoding" 
-    :foundry "outline" 
+    :family "NanumGothicCoding"
+    :foundry "outline"
     :slant normal
     :weight normal
     :height 143
@@ -61,6 +61,7 @@
 ;; jedi
 ;; markdown-mode
 ;; rst-mode
+;; twittering-mode
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -248,3 +249,7 @@
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 
+
+;; twittering-mode
+(setq twittering-use-master-password t)
+(twittering-enable-unread-status-notifier)

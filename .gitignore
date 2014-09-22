@@ -8,6 +8,9 @@
 
 #####################
 emacs/.emacs.d
+emacs/.twittering-mode-icons.gz
+emacs/.twittering-mode.gpg
+
 nabi/nabi.log
 
 *.swp
