@@ -228,6 +228,16 @@
     ;; This gives you a tab of 2 spaces
     (setq coffee-tab-width 2)))
 
+;; matlab
+;; http://www.emacswiki.org/MatlabMode
+(add-to-list 'load-path "~/.emacs.d/matlab-emacs")
+(autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+(add-to-list
+  'auto-mode-alist
+  '("\\.m$" . matlab-mode))
+(setq matlab-indent-function t)
+(setq matlab-shell-command "matlab")
+
 
 ;; vcs
 (setq
