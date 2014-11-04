@@ -35,6 +35,9 @@
 (global-set-key (kbd "<S-kana>") 'toggle-input-method)
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 
+;; Alt-F4 = quit
+(global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
+
 ;; set basic emacs mode path
 (add-to-list 'load-path "~/.emacs.d/")
 
