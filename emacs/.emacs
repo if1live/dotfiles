@@ -91,8 +91,35 @@
 
 
 ;; http://www.emacswiki.org/emacs/DeletingWhitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
+;; do not use global scope before-save-hook.
+;; because in markdown, trailing two spaces means newline.
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; detect major mode
+;; http://stackoverflow.com/questions/6312202/detect-current-major-mode-in-emacs-from-lisp
+(defvar delete-trailing-whitespace-language-list
+  (list
+    'lisp-mode
+    'emacs-lisp-mode
+    'python-mode
+    'html-mode
+    'scheme-mode
+    'php-mode
+    'js-mode
+    'coffee-mode))
+(defun my-delete-trailing-whitespace-func (curr-lang-mode lang-mode remain-list)
+  (if remain-list
+    (if (eq curr-lang-mode lang-mode)
+      (delete-trailing-whitespace)
+      (my-delete-trailing-whitespace-func
+        curr-lang-mode
+        (car remain-list)
+        (cdr remain-list)))))
+(defun my-delete-trailing-whitespace()
+  (my-delete-trailing-whitespace-func
+    major-mode
+    (car delete-trailing-whitespace-language-list)
+    (cdr delete-trailing-whitespace-language-list)))
+(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 ;; color settings
 (require 'color-theme)
