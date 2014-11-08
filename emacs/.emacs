@@ -1,11 +1,19 @@
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ ;; Show column number on the status line
+ '(column-number-mode t)
  '(current-language-environment "UTF-8")
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t))
+
+;; 윈도우 + 나눔고딕코딩
+(custom-set-faces
+ '(default ((t (
+    :family "NanumGothicCoding"
+    :foundry "outline"
+    :slant normal
+    :weight normal
+    :height 143
+    :width normal)))))
 
 ;; reference
 ;; http://dotfiles.org/~battlemidget/.emacs
@@ -27,9 +35,13 @@
 (global-set-key (kbd "<S-kana>") 'toggle-input-method)
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 
+;; Alt-F4 = quit
+(global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
+
 ;; set basic emacs mode path
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; el-get setting
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -50,6 +62,9 @@
 ;; color-theme
 ;; rainbow-delimiters
 ;; jedi
+;; markdown-mode
+;; rst-mode
+;; twittering-mode
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -122,21 +137,31 @@
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 ;; color settings
+;; 2014-09-19 기준으로 gl-get + color-theme가 먹히지 않는다
+;; 원인은 color-theme의 기본 저장소인
+;; http://download.savannah.gnu.org/releases/color-theme/color-theme-6.6.0.zip
+;; 를 받을수 없기 때문인것으로 보인다. (Index는 접근되면서 파일받기는 안된다니...)
+;; 그래서 따로 구해서 저장소에 때려박았다.
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (require 'color-theme)
 (color-theme-initialize)
+
+(defun set-color-theme-dispatch-platform ()
+  (if (eq system-type 'windows-nt)
+    ;; for windows
+    (color-theme-euphoria)
+    ;; other platform, like linux console + putty
+    (color-theme-lethe)))
+(set-color-theme-dispatch-platform)
+
 ;;(color-theme-dark-laptop)
-;;(color-theme-euphoria)
 ;;(color-theme-arjen)
-(color-theme-lethe)
 ;;(color-theme-hober)
 ;; for window color
 ;;(color-theme-clarity)
 ;; for linux console color
 ;;(color-theme-digital-ofs1)
 
-
-;; Show column number on the status line
-(column-number-mode t)
 
 ;; new lines at the end
 (setq next-line-add-newlines t)
@@ -233,6 +258,16 @@
     ;; This gives you a tab of 2 spaces
     (setq coffee-tab-width 2)))
 
+;; matlab
+;; http://www.emacswiki.org/MatlabMode
+(add-to-list 'load-path "~/.emacs.d/matlab-emacs")
+(autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+(add-to-list
+  'auto-mode-alist
+  '("\\.m$" . matlab-mode))
+(setq matlab-indent-function t)
+(setq matlab-shell-command "matlab")
+
 
 ;; vcs
 (setq
@@ -253,3 +288,8 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
+
+
+;; twittering-mode
+(setq twittering-use-master-password t)
+(twittering-enable-unread-status-notifier)
