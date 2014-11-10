@@ -121,19 +121,9 @@
     'php-mode
     'js-mode
     'coffee-mode))
-(defun my-delete-trailing-whitespace-func (curr-lang-mode lang-mode remain-list)
-  (if remain-list
-    (if (eq curr-lang-mode lang-mode)
-      (delete-trailing-whitespace)
-      (my-delete-trailing-whitespace-func
-        curr-lang-mode
-        (car remain-list)
-        (cdr remain-list)))))
 (defun my-delete-trailing-whitespace()
-  (my-delete-trailing-whitespace-func
-    major-mode
-    (car delete-trailing-whitespace-language-list)
-    (cdr delete-trailing-whitespace-language-list)))
+  (if (member major-mode delete-trailing-whitespace-language-list)
+    (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 ;; color settings
