@@ -120,7 +120,9 @@
     'scheme-mode
     'php-mode
     'js-mode
-    'coffee-mode))
+    'coffee-mode
+    'c-mode
+    'c++-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
     (delete-trailing-whitespace)))
