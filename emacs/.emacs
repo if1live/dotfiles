@@ -122,7 +122,8 @@
     'js-mode
     'coffee-mode
     'c-mode
-    'c++-mode))
+    'c++-mode
+    'latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
     (delete-trailing-whitespace)))
