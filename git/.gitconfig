@@ -6,6 +6,7 @@
 [color]
 	diff = auto
 	ui = true
-[push]
-	default = simple
+# not working on git version 1.7.10.4
+#[push]
+#	default = simple
 
