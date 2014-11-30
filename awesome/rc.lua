@@ -85,7 +85,8 @@ if beautiful.wallpaper then
             end
         end
     else
-        gears.wallpaper.fit(home_dir.."/.config/awesome/theme/4-3-wallpaper.jpg", s)
+        gears.wallpaper.fit(home_dir.."/.config/awesome/theme/kanji-file-name-0.jpg", s)
+        -- gears.wallpaper.fit(home_dir.."/.config/awesome/theme/4-3-wallpaper.jpg", s)
     end
 end
 -- }}}

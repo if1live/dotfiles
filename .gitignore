@@ -1,4 +1,17 @@
+#####################
+# Elisp
+# Compiled
+*.elc
+
+# Packaging
+.cask
+
+#####################
 emacs/.emacs.d
+emacs/.twittering-mode-icons.gz
+emacs/.twittering-mode.gpg
+
+nabi/nabi.log
 
 *.swp
 *.bak

@@ -1,11 +1,24 @@
-[alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [user]
 	name = if1live
 	email = libsora25@gmail.com
+
+[alias]
+    #http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+    lg = !"git lg1"
+
 [color]
 	diff = auto
 	ui = true
+
+[core]
+    autocrfl = input
+
+[credential]
+    helper = cache --timeout=3600
+
+# old git can't support
 # not working on git version 1.7.10.4
 #[push]
 #	default = simple
