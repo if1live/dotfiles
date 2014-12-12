@@ -1,0 +1,23 @@
+# awesome
+awesome -> {{HOME}}/.config/awesome
+
+# emacs
+
+# git
+git/gitconfig -> {{HOME}}/.gitconfig
+
+# gtk
+gtk/gtkrc-2.0 -> {{HOME}}/.gtkrc-2.0
+gtk/gtkrc.mine -> {{HOME}}/.gtkrc.mine
+
+# nabi
+nabi -> {{HOME}}/.nabi
+
+# tmux
+tmux/tmux.conf -> {{HOME}}/.tmux.conf
+
+# vim
+vim/vimrc -> {{HOME}}/.vimrc
+
+# zsh
+zsh/zshrc -> {{HOME}}/.zshrc
