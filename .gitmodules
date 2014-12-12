@@ -1,3 +1,6 @@
 [submodule "emacs/.emacs.d/matlab-emacs"]
 	path = emacs/.emacs.d/matlab-emacs
 	url = https://github.com/ruediger/matlab-emacs.git
+[submodule "easylinker"]
+	path = easylinker
+	url = https://github.com/if1live/easylinker.git
