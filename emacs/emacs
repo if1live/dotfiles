@@ -59,7 +59,6 @@
 ;; yaml-mode
 ;; scheme-complete
 ;; coffee-mode
-;; color-theme
 ;; rainbow-delimiters
 ;; jedi
 ;; markdown-mode
@@ -187,6 +186,7 @@
 
 ;; emacs lisp
 ;; http://www.emacswiki.org/emacs/EmacsLispMode
+(add-to-list 'auto-mode-alist '(".emacs" . lisp-mode))
 (add-hook 'emacs-lisp-mode-hook
   (lambda ()
     (setq tab-witth 2)
