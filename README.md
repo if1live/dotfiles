@@ -1,17 +1,23 @@
 # dotfiles
 
-my dotfiles
+My dotfiles
 
-## external
+## Install
 ```bash
-# https://github.com/yonchu/grunt-zsh-completion
-cd ~/.oh-my-zsh/custom/plugins
-git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
-```
+# install basic environment
+./bootstrap.sh core
+./bootstrap.sh oh-my-zsh
+./bootstrap.sh rbenv
 
-## How to use?
-* pip install -r requirements.txt
-* python -m easylinker.cli <metafile>
-	* example : python -m easylinker.cli meta-core.txt
+# set up virtualenv
+mkdir -p ~/venv
+cd ~/venv
+virtualenv base
+. ./base/bin/activate
+
+# create dotfile symbolic link
+pip install -r requirements.txt
+python -m easylinker.cli meta-core.txt
+```
 
 
