@@ -121,6 +121,7 @@
     'js-mode
     'coffee-mode
     'c-mode
+    'ruby-mode
     'c++-mode
     'latex-mode))
 (defun my-delete-trailing-whitespace()
@@ -274,6 +275,9 @@
     (setq-default tab-width 4)
     (setq-default indent-tabs-mode nil)))
 
+;; ruby
+;; http://stackoverflow.com/questions/6453955/how-do-i-prevent-emacs-from-adding-coding-information-in-the-first-line
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; vcs
 (setq
@@ -288,7 +292,6 @@
   ;; display time in the modeline
   display-time-24hr-format t
   display-time-day-and-date t)
-
 
 ;; jedi - python ide
 (add-hook 'python-mode-hook 'jedi:setup)
