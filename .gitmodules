@@ -1,0 +1,6 @@
+[submodule "emacs/emacs.d/ext/scheme-complete"]
+	path = emacs/emacs.d/ext/scheme-complete
+	url = https://github.com/emacsmirror/scheme-complete.git
+[submodule "emacs/emacs.d/ext/color-theme"]
+	path = emacs/emacs.d/ext/color-theme
+	url = https://github.com/jwiegley/color-theme.git

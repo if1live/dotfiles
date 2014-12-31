@@ -130,10 +130,9 @@
 
 
 ;; scheme-complete
-;; 2014-12-31 기준으로 el-get + scheme-complete가 먹히지 않는다
-;; https://github.com/emacsmirror/scheme-complete
-;; 를 대신 이용한다
-(add-to-list 'load-path "~/.emacs.d/scheme-complete")
+;; 2014-12-31 기준으로 el-get + scheme-complete가 먹히지 않는다. 
+;; 그래서 외부 저장소 이용
+(add-to-list 'load-path "~/.emacs.d/ext/scheme-complete")
 
 ;; color settings
 ;; 2014-09-19 기준으로 el-get + color-theme가 먹히지 않는다
@@ -142,7 +141,7 @@
 ;; 를 받을수 없기 때문인것으로 보인다. (Index는 접근되면서 파일받기는 안된다니...)
 ;; 그래서 따로 구해서 저장소에 때려박았다.
 ;; 사용된 코드 : https://github.com/jwiegley/color-theme
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/ext/color-theme")
 (require 'color-theme)
 (color-theme-initialize)
 
