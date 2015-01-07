@@ -101,6 +101,9 @@ eval "$(rbenv init -)" || 1
 #rbenv global 2.1.2
 #ruby -v
 
+# ccache
+export PATH=/usr/lib/ccache:$PATH
+
 # android sdk/ndk
 if [[ $USER == "haruna" ]]; then
 	export ANDROID_SDK_NAME="android-sdk-linux"
