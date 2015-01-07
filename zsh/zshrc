@@ -56,9 +56,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+	export EDITOR='vim'
 else
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 export VISUAL=$EDITOR
 
@@ -69,14 +69,20 @@ export ARCHFLAGS="-arch x86_64"
 export PYTHONIOENCODING="utf-8"
 
 # ssh
-#export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 if [[ $USER == "haruna" ]]; then
-  echo "Env=> work"
+	ENV_NAME="work"
 else
-  echo "Env=> home"
-  alias ssh-pi="ssh pi@192.168.0.16"
+	ENV_NAME="home"
+	alias ssh-pi="ssh pi@192.168.0.16"
 fi
+
+echo "Hello, $USER."
+echo ""
+echo "## Environment"
+echo "Computer : ${ENV_NAME}"
+echo ""
 
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
@@ -94,3 +100,32 @@ eval "$(rbenv init -)" || 1
 #rbenv install 2.1.2
 #rbenv global 2.1.2
 #ruby -v
+
+# android sdk/ndk
+if [[ $USER == "haruna" ]]; then
+	export ANDROID_SDK_NAME="android-sdk-linux"
+	export ANDROID_NDK_NAME="android-ndk-r8e"
+	export ANDROID_ROOT_DIRNAME=~/android
+else
+	export ANDROID_SDK_NAME="android-sdk-linux"
+	export ANDROID_NDK_NAME="android-ndk-r8e"
+	export ANDROID_ROOT_DIRNAME=~/android
+fi
+
+export ANDROID_HOME=${ANDROID_ROOT_DIRNAME}/${ANDROID_SDK_NAME}
+export ANDROID_NDK_ROOT=${ANDROID_ROOT_DIRNAME}/${ANDROID_NDK_NAME}
+
+echo "## Android"
+echo "Android SDK : ${ANDROID_HOME}"
+echo "Android NDK : ${ANDROID_NDK_ROOT}"
+echo ""
+
+export PATH=${ANDROID_NDK_ROOT}:$PATH
+export PATH=${ANDROID_HOME}/platform-tools:$PATH
+export PATH=${ANDROID_HOME}/tools:$PATH
+
+export NDK_ROOT=${ANDROID_NDK_ROOT}
+export ANDROID_SDK_ROOT=${ANDROID_HOME}
+
+export NDK_CCACHE=`which ccache`
+
