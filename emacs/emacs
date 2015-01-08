@@ -122,6 +122,7 @@
     'c-mode
     'ruby-mode
     'c++-mode
+    'shell-script-mode
     'latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
