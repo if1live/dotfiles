@@ -1,134 +1,203 @@
-# Path to your oh-my-zsh configuration.
-ZSH=~/.oh-my-zsh
+function Zsh_init {
+	# Path to your oh-my-zsh configuration.
+	ZSH=~/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="gianu"
+	# Set name of the theme to load.
+	# Look in ~/.oh-my-zsh/themes/
+	# Optionally, if you set this to "random", it'll load a random theme each
+	# time that oh-my-zsh is loaded.
+	ZSH_THEME="gianu"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+	# Set this to use case-sensitive completion
+	# CASE_SENSITIVE="true"
 
-# Set this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+	# Uncomment this to disable bi-weekly auto-update checks
+	# DISABLE_AUTO_UPDATE="true"
 
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+	# Uncomment to change how often to auto-update? (in days)
+	export UPDATE_ZSH_DAYS=13
 
-# Uncomment to change how often to auto-update? (in days)
-export UPDATE_ZSH_DAYS=13
+	# Uncomment following line if you want to disable colors in ls
+	# DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+	# Uncomment following line if you want to disable autosetting terminal title.
+	# DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+	# Uncomment following line if you want to disable command autocorrection
+	# DISABLE_CORRECTION="true"
 
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
+	# Uncomment following line if you want red dots to be displayed while waiting for completion
+	# COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+	# Uncomment following line if you want to disable marking untracked files under
+	# VCS as dirty. This makes repository status check for large repositories much,
+	# much faster.
+	# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+	# Uncomment following line if you want to the command execution time stamp shown
+	# in the history command output.
+	# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+	HIST_STAMPS="yyyy/mm/dd"
 
-# Uncomment following line if you want to the command execution time stamp shown
-# in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="yyyy/mm/dd"
+	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+	# Example format: plugins=(rails git textmate ruby lighthouse)
+	plugins=(git github node npm pip python grunt git-flow fabric debian coffee)
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github node npm pip python grunt git-flow fabric debian coffee)
+	source $ZSH/oh-my-zsh.sh
+}
 
-source $ZSH/oh-my-zsh.sh
 
-# User configuration
+function System_release_name {
+	DEBIAN_RELEASE_FILE="/etc/lsb-release"
+	REDHAT_RELEASE_FILE="/etc/redhat-release"
 
-export PATH="/home/sora/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export MANPATH="/usr/local/man:$MANPATH"
+	if [ -f $DEBIAN_RELEASE_FILE ]; then
+		# ubuntu, debian, etc
+		local DIST_NAME=`sed -n 's/^DISTRIB_ID=//p' $DEBIAN_RELEASE_FILE`
+		local DIST_VERSION=`sed -n 's/^DISTRIB_RELEASE=//p' $DEBIAN_RELEASE_FILE`
+		DIST_FULLNAME="$DIST_NAME $DIST_VERSION"
+	elif [ -f $REDHAT_RELEASE_FILE ]; then
+		# centos
+		DIST_FULLNAME=`cat $REDHAT_RELEASE_FILE`
+	else
+		DIST_FULLNAME="Unknown Distribution"
+	fi
+}
 
-# # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
-else
-	export EDITOR='vim'
-fi
-export VISUAL=$EDITOR
+function System_environment {
+	if [[ $USER == "haruna" ]]; then
+		ENV_NAME="Work"
+	elif [[ $USER == "amane" ]]; then
+		ENV_NAME="Work"
+	elif [[ $USER == "pi" ]]; then
+		ENV_NAME="Raspberry Pi"
+	else
+		ENV_NAME="Home"
+	fi
+}
 
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# python encoding
-export PYTHONIOENCODING="utf-8"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-
-if [[ $USER == "haruna" ]]; then
-	ENV_NAME="work"
-else
-	ENV_NAME="home"
+function System_env_hook_rpi {
 	alias ssh-pi="ssh pi@192.168.0.16"
-fi
+}
 
-echo "Hello, $USER."
-echo ""
-echo "## Environment"
-echo "Computer : ${ENV_NAME}"
-echo ""
+function System_init {
+	System_release_name
+	System_environment
 
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd......='cd ../../../../..'
+	if [[ $ENV_NAME == "pi" ]]; then
+		System_env_hook_rpi
+	fi
+}
 
-# set up ruby at last
-# https://gorails.com/setup/ubuntu/14.04
-# sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
-# git clone git://github.com/sstephenson/rbenv.git .rbenv
-# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-eval "$(rbenv init -)" || 1
-#rbenv install 2.1.2
-#rbenv global 2.1.2
-#ruby -v
+function System_display {
+	echo "Hello, $USER."
+	echo ""
+	echo "## Environment"
+	echo "User\t\t: ${USER}"
+	echo "Computer\t: ${DIST_FULLNAME}"
+	echo "Environment\t: ${ENV_NAME}"
+	echo ""
+}
 
-# ccache
-export PATH=/usr/lib/ccache:$PATH
+function Shell_init {
+	# User configuration
+	export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+	export MANPATH="/usr/local/man:$MANPATH"
+	export PATH="/home/${USER}/bin:$PATH"
 
-# android sdk/ndk
-if [[ $USER == "haruna" ]]; then
-	export ANDROID_SDK_NAME="android-sdk-linux"
-	export ANDROID_NDK_NAME="android-ndk-r8e"
-	export ANDROID_ROOT_DIRNAME=~/android
-else
-	export ANDROID_SDK_NAME="android-sdk-linux"
-	export ANDROID_NDK_NAME="android-ndk-r8e"
-	export ANDROID_ROOT_DIRNAME=~/android
-fi
+	# # Preferred editor for local and remote sessions
+	if [[ -n $SSH_CONNECTION ]]; then
+		export EDITOR='vim'
+	else
+		export EDITOR='vim'
+	fi
+	export VISUAL=$EDITOR
+	
+	# Compilation flags
+	export ARCHFLAGS="-arch x86_64"
+	
+	# python encoding
+	export PYTHONIOENCODING="utf-8"
+	
+	# ssh
+	export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-export ANDROID_HOME=${ANDROID_ROOT_DIRNAME}/${ANDROID_SDK_NAME}
-export ANDROID_NDK_ROOT=${ANDROID_ROOT_DIRNAME}/${ANDROID_NDK_NAME}
+	Shell_alias
+}
 
-echo "## Android"
-echo "Android SDK : ${ANDROID_HOME}"
-echo "Android NDK : ${ANDROID_NDK_ROOT}"
-echo ""
+function Shell_alias {
+	alias cd...='cd ../..'
+	alias cd....='cd ../../..'
+	alias cd.....='cd ../../../..'
+	alias cd......='cd ../../../../..'
+}
 
-export PATH=${ANDROID_NDK_ROOT}:$PATH
-export PATH=${ANDROID_HOME}/platform-tools:$PATH
-export PATH=${ANDROID_HOME}/tools:$PATH
+function Android_init {
+	# android sdk/ndk
+	if [[ $USER == "haruna" ]]; then
+		export ANDROID_SDK_NAME="android-sdk-linux"
+		export ANDROID_NDK_NAME="android-ndk-r8e"
+		export ANDROID_ROOT_DIRNAME=~/android
+	else
+		export ANDROID_SDK_NAME="android-sdk-linux"
+		export ANDROID_NDK_NAME="android-ndk-r8e"
+		export ANDROID_ROOT_DIRNAME=~/android
+	fi
 
-export NDK_ROOT=${ANDROID_NDK_ROOT}
-export ANDROID_SDK_ROOT=${ANDROID_HOME}
+	export ANDROID_HOME=${ANDROID_ROOT_DIRNAME}/${ANDROID_SDK_NAME}
+	export ANDROID_NDK_ROOT=${ANDROID_ROOT_DIRNAME}/${ANDROID_NDK_NAME}
 
-export NDK_CCACHE=`which ccache`
+	export PATH=${ANDROID_NDK_ROOT}:$PATH
+	export PATH=${ANDROID_HOME}/platform-tools:$PATH
+	export PATH=${ANDROID_HOME}/tools:$PATH
+	
+	export NDK_ROOT=${ANDROID_NDK_ROOT}
+	export ANDROID_SDK_ROOT=${ANDROID_HOME}
+
+	Android_ccache
+}
+
+function Android_display {
+	echo "## Android"
+	echo "Android SDK : ${ANDROID_HOME}"
+	echo "Android NDK : ${ANDROID_NDK_ROOT}"
+	echo ""
+}
+
+function Android_ccache {
+	# ccache
+	export PATH=/usr/lib/ccache:$PATH
+	export NDK_CCACHE=`which ccache`
+}
+
+
+function Ruby_init {
+	# set up ruby at last
+	# https://gorails.com/setup/ubuntu/14.04
+	# sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
+	# git clone git://github.com/sstephenson/rbenv.git .rbenv
+	# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+	eval "$(rbenv init -)" || 1
+	#rbenv install 2.1.2
+	#rbenv global 2.1.2
+	#ruby -v
+}
+
+
+Zsh_init
+Shell_init
+System_init
+System_display	
+Ruby_init
+Android_init
+Android_display
+
+
+
+
+
+
 
