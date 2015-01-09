@@ -198,6 +198,19 @@ function Android_ccache {
 }
 
 
+function Android_reset_adb {
+	# http://stackoverflow.com/questions/9210152/set-up-device-for-development-no-permissions
+	# Fix this problem
+	# List of devices attached 
+	# ????????????    no permissions
+	# Configure udev or use root permission
+	# I use root permission becuase zshrc configuration file is used in many computer.
+	sudo adb kill-server
+	sudo adb start-server
+	sudo adb devices
+}
+
+
 function Ruby_init {
 	# set up ruby at last
 	# https://gorails.com/setup/ubuntu/14.04
@@ -220,6 +233,8 @@ System_display
 Ruby_init
 Android_init
 Android_display
+
+
 
 
 
