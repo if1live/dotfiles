@@ -18,6 +18,9 @@
 [credential]
     helper = cache --timeout=3600
 
+[github]
+	user = if1live
+
 # old git can't support
 # not working on git version 1.7.10.4
 #[push]

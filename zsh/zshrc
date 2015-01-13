@@ -233,9 +233,5 @@ Android_display
 
 
 
-
-
-
-
-
-
+# added by travis gem
+[ -f /home/haruna/.travis/travis.sh ] && source /home/haruna/.travis/travis.sh
