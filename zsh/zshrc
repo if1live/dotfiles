@@ -133,49 +133,87 @@ function Shell_alias {
 	alias cd......='cd ../../../../..'
 }
 
+ANDROID_ROOT_DIR_LIST=(
+	~/android
+	/opt
+	/opt/android
+)
+
 function Android_init {
-	# android sdk/ndk
-	if [[ $USER == "haruna" ]]; then
-		export ANDROID_SDK_NAME="android-sdk-linux"
-		export ANDROID_NDK_NAME="android-ndk-r8e"
-		local ANDROID_ROOT_DIRNAME=~/android
-	else
-		export ANDROID_SDK_NAME="android-sdk-linux"
-		export ANDROID_NDK_NAME="android-ndk-r8e"
-		local ANDROID_ROOT_DIRNAME=~/android
-	fi
-
-	export ANDROID_HOME=${ANDROID_ROOT_DIRNAME}/${ANDROID_SDK_NAME}
-	export ANDROID_NDK_ROOT=${ANDROID_ROOT_DIRNAME}/${ANDROID_NDK_NAME}
-
-	if [ ! -d $ANDROID_HOME ] || [ ! -d $ANDROID_NDK_ROOT ]; then
-		export ANDROID_HOME=""
-		export ANDROID_NDK_ROOT=""
-		return
-	fi
-
-	export PATH=${ANDROID_NDK_ROOT}:$PATH
-	export PATH=${ANDROID_HOME}/platform-tools:$PATH
-	export PATH=${ANDROID_HOME}/tools:$PATH
-
-	export NDK_ROOT=${ANDROID_NDK_ROOT}
-	export ANDROID_SDK_ROOT=${ANDROID_HOME}
-
+	Android_sdk_init
+	Android_ndk_init
 	Android_ccache
+}
+
+function Android_sdk_init {
+	Android_set_sdk_dir ""
+	local ANDROID_SDK_NAME="android-sdk-linux"
+
+	# find android sdk
+	for ANDROID_ROOT_DIR in ${ANDROID_ROOT_DIR_LIST[@]}; do
+		local TARGET_DIR=${ANDROID_ROOT_DIR}/${ANDROID_SDK_NAME}
+		if [ -d $TARGET_DIR ]; then
+			Android_set_sdk_dir $TARGET_DIR
+			return
+		fi
+	done
+}
+
+function Android_ndk_init {
+	Android_set_ndk_dir ""
+
+	# find android ndk
+	for ANDROID_ROOT_DIR in ${ANDROID_ROOT_DIR_LIST[@]}; do
+		if [ ! -d $ANDROID_ROOT_DIR ]; then
+			continue;
+		fi
+
+		for f in $(ls $ANDROID_ROOT_DIR | sort -r); do
+			local TARGET=${ANDROID_ROOT_DIR}/$f
+			if [ -f $TARGET ]; then
+				continue
+			fi
+			if [[ $f == *"ndk"* ]]; then
+				Android_set_ndk_dir $TARGET
+			fi
+		done
+	done
+}
+
+function Android_set_sdk_dir {
+	if [[ "$1" == "" ]]; then
+		unset ANDROID_SDK_ROOT
+	else
+		export PATH=$1/platform-tools:$PATH
+		export PATH=$1/tools:$PATH
+		export ANDROID_SDK_ROOT=$1
+	fi
+}
+
+function Android_set_ndk_dir {
+	if [[ "$1" == "" ]]; then
+		unset ANDROID_NDK_VERSION
+		unset ANDROID_NDK_ROOT
+	else
+		export ANDROID_NDK_VERSION=`expr "$1" : '.*ndk-\(r[0-9]*[a-z]\)'`
+		export ANDROID_NDK_ROOT=$1
+		export PATH=${ANDROID_NDK_ROOT}:$PATH
+	fi
 }
 
 function Android_display {
 	echo "## Android"
-	if [[ $ANDROID_HOME == "" ]]; then
+
+	if [[ $ANDROID_SDK_ROOT == "" ]]; then
 		echo "Android SDK is not exist"
 	else
-		echo "Android SDK\t: ${ANDROID_HOME}"
+		echo "Android SDK\t: ${ANDROID_SDK_ROOT}"
 	fi
 
 	if [[ $ANDROID_NDK_ROOT == "" ]]; then
 		echo "Android NDK is not exist"
 	else
-		echo "Android NDK\t: ${ANDROID_NDK_ROOT}"
+		echo "Android NDK(${ANDROID_NDK_VERSION}): ${ANDROID_NDK_ROOT}"
 	fi
 
 	if [[ $NDK_CCACHE == "" ]]; then
@@ -193,7 +231,7 @@ function Android_ccache {
 		export PATH=/usr/lib/ccache:$PATH
 		export NDK_CCACHE=`which ccache`
 	else
-		export NDK_CCACHE=""
+		unset NDK_CCACHE
 	fi
 }
 
@@ -232,6 +270,6 @@ Android_init
 Android_display
 
 
-
+# automatic added
 # added by travis gem
 [ -f /home/haruna/.travis/travis.sh ] && source /home/haruna/.travis/travis.sh
