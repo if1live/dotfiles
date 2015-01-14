@@ -293,6 +293,7 @@
 (add-to-list 'auto-mode-alist '("rakefile\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\.gemspec$" . ruby-mode))
 
 ;; shell-script-mode
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
