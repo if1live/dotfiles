@@ -63,6 +63,7 @@
 ;; markdown-mode
 ;; rst-mode
 ;; twittering-mode
+;; slim-mode
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -110,20 +111,20 @@
 ;; detect major mode
 ;; http://stackoverflow.com/questions/6312202/detect-current-major-mode-in-emacs-from-lisp
 (defvar delete-trailing-whitespace-language-list
-  (list
-    'lisp-mode
-    'emacs-lisp-mode
-    'python-mode
-    'html-mode
-    'scheme-mode
-    'php-mode
-    'js-mode
-    'coffee-mode
-    'c-mode
-    'ruby-mode
-    'c++-mode
-    'shell-script-mode
-    'latex-mode))
+  '(lisp-mode
+    emacs-lisp-mode
+    python-mode
+    html-mode
+    scheme-mode
+    php-mode
+    js-mode
+    coffee-mode
+    c-mode
+    ruby-mode
+    c++-mode
+    shell-script-mode
+    slim-mode
+    latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
     (delete-trailing-whitespace)))
