@@ -194,9 +194,11 @@ function Android_set_ndk_dir {
 	if [[ "$1" == "" ]]; then
 		unset ANDROID_NDK_VERSION
 		unset ANDROID_NDK_ROOT
+		unset NDK_ROOT
 	else
 		export ANDROID_NDK_VERSION=`expr "$1" : '.*ndk-\(r[0-9]*[a-z]\)'`
 		export ANDROID_NDK_ROOT=$1
+		export NDK_ROOT=$1
 		export PATH=${ANDROID_NDK_ROOT}:$PATH
 	fi
 }
