@@ -64,6 +64,7 @@
 ;; rst-mode
 ;; twittering-mode
 ;; slim-mode
+;; web-mode <- for erb file
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -124,6 +125,7 @@
     c++-mode
     shell-script-mode
     slim-mode
+    web-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
@@ -298,6 +300,9 @@
 
 ;; shell-script-mode
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\.erb$" . web-mode))
 
 ;; vcs
 (setq
