@@ -1,4 +1,4 @@
-function Zsh_init {
+function Zsh::init {
 	# Path to your oh-my-zsh configuration.
 	ZSH=~/.oh-my-zsh
 
@@ -48,7 +48,7 @@ function Zsh_init {
 }
 
 
-function System_release_name {
+function System::release_name {
 	DEBIAN_RELEASE_FILE="/etc/lsb-release"
 	REDHAT_RELEASE_FILE="/etc/redhat-release"
 
@@ -65,7 +65,7 @@ function System_release_name {
 	fi
 }
 
-function System_environment {
+function System::environment {
 	if [[ $USER == "haruna" ]]; then
 		ENV_NAME="Work"
 	elif [[ $USER == "amane" ]]; then
@@ -77,20 +77,20 @@ function System_environment {
 	fi
 }
 
-function System_env_hook_rpi {
+function System::env_hook_rpi {
 	alias ssh-pi="ssh pi@192.168.0.16"
 }
 
-function System_init {
-	System_release_name
-	System_environment
+function System::init {
+	System::release_name
+	System::environment
 
 	if [[ $ENV_NAME == "pi" ]]; then
 		System_env_hook_rpi
 	fi
 }
 
-function System_display {
+function System::display {
 	echo "Hello, $USER."
 	echo ""
 	echo "## Environment"
@@ -100,7 +100,7 @@ function System_display {
 	echo ""
 }
 
-function Shell_init {
+function Shell::init {
 	# User configuration
 	export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 	export MANPATH="/usr/local/man:$MANPATH"
@@ -123,10 +123,10 @@ function Shell_init {
 	# ssh
 	export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-	Shell_alias
+	Shell::alias
 }
 
-function Shell_alias {
+function Shell::alias {
 	alias cd...='cd ../..'
 	alias cd....='cd ../../..'
 	alias cd.....='cd ../../../..'
@@ -139,28 +139,28 @@ ANDROID_ROOT_DIR_LIST=(
 	/opt/android
 )
 
-function Android_init {
-	Android_sdk_init
-	Android_ndk_init
-	Android_ccache
+function Android::init {
+	Android::sdk_init
+	Android::ndk_init
+	Android::ccache
 }
 
-function Android_sdk_init {
-	Android_set_sdk_dir ""
+function Android::sdk_init {
+	Android::set_sdk_dir ""
 	local ANDROID_SDK_NAME="android-sdk-linux"
 
 	# find android sdk
 	for ANDROID_ROOT_DIR in ${ANDROID_ROOT_DIR_LIST[@]}; do
 		local TARGET_DIR=${ANDROID_ROOT_DIR}/${ANDROID_SDK_NAME}
 		if [ -d $TARGET_DIR ]; then
-			Android_set_sdk_dir $TARGET_DIR
+			Android::set_sdk_dir $TARGET_DIR
 			return
 		fi
 	done
 }
 
-function Android_ndk_init {
-	Android_set_ndk_dir ""
+function Android::ndk_init {
+	Android::set_ndk_dir ""
 
 	# find android ndk
 	for ANDROID_ROOT_DIR in ${ANDROID_ROOT_DIR_LIST[@]}; do
@@ -174,13 +174,13 @@ function Android_ndk_init {
 				continue
 			fi
 			if [[ $f == *"ndk"* ]]; then
-				Android_set_ndk_dir $TARGET
+				Android::set_ndk_dir $TARGET
 			fi
 		done
 	done
 }
 
-function Android_set_sdk_dir {
+function Android::set_sdk_dir {
 	if [[ "$1" == "" ]]; then
 		unset ANDROID_SDK_ROOT
 	else
@@ -190,7 +190,7 @@ function Android_set_sdk_dir {
 	fi
 }
 
-function Android_set_ndk_dir {
+function Android::set_ndk_dir {
 	if [[ "$1" == "" ]]; then
 		unset ANDROID_NDK_VERSION
 		unset ANDROID_NDK_ROOT
@@ -203,7 +203,7 @@ function Android_set_ndk_dir {
 	fi
 }
 
-function Android_display {
+function Android::display {
 	echo "## Android"
 
 	if [[ $ANDROID_SDK_ROOT == "" ]]; then
@@ -226,7 +226,7 @@ function Android_display {
 	echo ""
 }
 
-function Android_ccache {
+function Android::ccache {
 	# ccache
 	local CCACHE_PATH=/usr/lib/ccache
 	if [ -d $CCACHE_PATH ]; then
@@ -238,7 +238,7 @@ function Android_ccache {
 }
 
 
-function Android_reset_adb {
+function Android::reset_adb {
 	# http://stackoverflow.com/questions/9210152/set-up-device-for-development-no-permissions
 	# Fix this problem
 	# List of devices attached 
@@ -250,26 +250,26 @@ function Android_reset_adb {
 	sudo adb devices
 }
 
-function Android_setup {
+function Android::setup {
 	#http://stackoverflow.com/questions/22701405/aapt-ioexception-error-2-no-such-file-or-directory-why-cant-i-build-my-grad
 	# for x86_64 + android sdk
 	sudo apt-get install lib32stdc++6 lib32z1
 }
 
 
-function Ruby_init {
+function Ruby::init {
 	export PATH="$HOME/.rbenv/bin:$PATH"
 	export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 	eval "$(rbenv init -)" || 1
 }
 
-Zsh_init
-Shell_init
-System_init
-System_display	
-Ruby_init
-Android_init
-Android_display
+Zsh::init
+Shell::init
+System::init
+System::display	
+Ruby::init
+Android::init
+Android::display
 
 
 # automatic added
