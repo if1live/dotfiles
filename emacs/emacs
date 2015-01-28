@@ -65,6 +65,7 @@
 ;; twittering-mode
 ;; slim-mode
 ;; web-mode <- for erb file
+;; scss-mode
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
@@ -302,7 +303,13 @@
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
 
 ;; web-mode
+;; http://web-mode.org/
 (add-to-list 'auto-mode-alist '("\.erb$" . web-mode))
+(add-hook 'web-mode-hook
+  (lambda ()
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)))
 
 ;; vcs
 (setq

@@ -42,7 +42,13 @@ function Zsh::init {
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 	# Example format: plugins=(rails git textmate ruby lighthouse)
-	plugins=(git github node npm pip python grunt git-flow fabric debian coffee)
+	plugins=(
+		debian tmux
+		git github git-flow
+		node npm grunt coffee
+		pip python fabric
+		ruby rails
+	)
 
 	source $ZSH/oh-my-zsh.sh
 }
@@ -113,13 +119,13 @@ function Shell::init {
 		export EDITOR='vim'
 	fi
 	export VISUAL=$EDITOR
-	
+
 	# Compilation flags
 	export ARCHFLAGS="-arch x86_64"
-	
+
 	# python encoding
 	export PYTHONIOENCODING="utf-8"
-	
+
 	# ssh
 	export SSH_KEY_PATH="~/.ssh/id_rsa"
 
@@ -131,6 +137,15 @@ function Shell::alias {
 	alias cd....='cd ../../..'
 	alias cd.....='cd ../../../..'
 	alias cd......='cd ../../../../..'
+
+	# https://twitter.com/liamosaur/status/506975850596536320
+	# fuck is sudo with previous command
+	# below command work on bash, not zsh.
+	# alias fuck='sudo $(history -p \!\!)'
+	# use simple command
+	# http://www.commandlinefu.com/commands/view/13/run-the-last-command-as-root
+	# sudo !!
+	#alias fuck='sudo $(!!)'
 }
 
 ANDROID_ROOT_DIR_LIST=(
@@ -241,7 +256,7 @@ function Android::ccache {
 function Android::reset_adb {
 	# http://stackoverflow.com/questions/9210152/set-up-device-for-development-no-permissions
 	# Fix this problem
-	# List of devices attached 
+	# List of devices attached
 	# ????????????    no permissions
 	# Configure udev or use root permission
 	# I use root permission becuase zshrc configuration file is used in many computer.
@@ -266,7 +281,7 @@ function Ruby::init {
 Zsh::init
 Shell::init
 System::init
-System::display	
+System::display
 Ruby::init
 Android::init
 Android::display
