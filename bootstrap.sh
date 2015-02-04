@@ -18,10 +18,15 @@ function install_core {
 
 	# core util
 	sudo apt-get install -qq tree unzip
+}
 
+function install_linm {
 	# linm
 	# http://kldp.net/projects/mls/download
-	sudo apt-get install -qq libsmbclient libssl0.9.8
+	sudo apt-get install -qq libsmbclient
+	sudo apt-get install -qq libssl0.9.8
+	sudo apt-get install -qq libssl1.0.0
+
 	local linm_url="http://kldp.net/frs/download.php/4509/linm_0.8.1-1_amd64.deb"
 	local tmp_linm_deb="/tmp/linm.deb"
 	wget -O $tmp_linm_deb $linm_url
@@ -53,7 +58,7 @@ function install_rbenv {
 	else
 		echo "rbenv already exist"
 	fi
-	
+
 	local RUBY_BUILD_PATH="$RBENV_ROOT/plugins/ruby-build"
 	if [ ! -d $RUBY_BUILD_PATH ]; then
 		git clone git://github.com/sstephenson/ruby-build.git $RUBY_BUILD_PATH
@@ -76,6 +81,10 @@ case "$1" in
 		echo "# Install core"
 		install_core
 		;;
+	"linm")
+		echo "# Install linm"
+		install_linm
+		;;
 	"oh-my-zsh")
 		echo "# Install oh-my-zsh"
 		install_oh_my_zsh
@@ -86,13 +95,6 @@ case "$1" in
 		;;
 	*)
 		echo "# unknown command"
-		echo "select core, oh-my-zsh, rbenv"
+		echo "select core, linm, oh-my-zsh, rbenv"
 		;;
 esac
-
-
-
-
-
-
-
