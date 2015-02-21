@@ -66,6 +66,11 @@ function System::release_name {
 	elif [ -f $REDHAT_RELEASE_FILE ]; then
 		# centos
 		DIST_FULLNAME=`cat $REDHAT_RELEASE_FILE`
+	elif [ -d "/Applications" ]; then
+		local DIST_NAME=$(sw_vers -productName)
+		local DIST_VERSION=$(sw_vers -productVersion)
+		local DIST_BUILD=$(sw_vers -buildVersion)
+		DIST_FULLNAME="$DIST_NAME $DIST_VERSION $DIST_BUILD"
 	else
 		DIST_FULLNAME="Unknown Distribution"
 	fi
@@ -278,6 +283,47 @@ function Ruby::init {
 	eval "$(rbenv init -)" || 1
 }
 
+function MacOSX::init {
+	if [ ! -d "/Applications" ]; then
+	fi
+
+	echo "## MacOSX "
+
+	# mysql
+	# http://stackoverflow.com/questions/10557507/rails-mysql-on-osx-library-not-loaded-libmysqlclient-18-dylib
+	MYSQL=/usr/local/mysql/bin
+	if [ -d $MYSQL ]; then
+		echo "mysql detected"
+		export PATH=$PATH:$MYSQL
+		export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+	fi
+
+	# emacs
+	local emacs_path="/usr/local/opt/emacs/bin"
+	if [ -d $emacs_path ]; then
+		echo "emacs detected"
+		export PATH=/usr/local/opt/emacs/bin:$PATH
+	fi
+
+	# hangul locale
+	export LC_ALL="ko_KR.UTF-8"
+	export LANG="ko_KR.UTF-8"
+
+	echo ""
+}
+
+function Local::init {
+	echo "## Local"
+	local zshrc_local="$HOME/.zshrc.local"
+	if [ -f $zshrc_local ]; then
+		echo "Include Local zshrc"
+		source $zshrc_local
+	fi
+	echo ""
+}
+
+
+
 Zsh::init
 Shell::init
 System::init
@@ -285,7 +331,8 @@ System::display
 Ruby::init
 Android::init
 Android::display
-
+MacOSX::init
+Local::init
 
 # automatic added
 # added by travis gem
