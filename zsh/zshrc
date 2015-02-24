@@ -285,6 +285,7 @@ function Ruby::init {
 
 function MacOSX::init {
 	if [ ! -d "/Applications" ]; then
+		return
 	fi
 
 	echo "## MacOSX "
@@ -313,12 +314,14 @@ function MacOSX::init {
 }
 
 function Local::init {
-	echo "## Local"
 	local zshrc_local="$HOME/.zshrc.local"
-	if [ -f $zshrc_local ]; then
-		echo "Include Local zshrc"
-		source $zshrc_local
+	if [ ! -f $zshrc_local ]; then
+		return
 	fi
+
+	echo "## Local"
+	echo "Include Local zshrc"
+	source $zshrc_local
 	echo ""
 }
 
