@@ -441,3 +441,12 @@
 
 ;; // External Plugin
 ;;;;;;;;;;;;;;;;;;;;;
+
+;; http://stackoverflow.com/questions/10026221/enable-all-disabled-commands-permanently
+;; Enable all disabled commands permanently
+(put 'set-goal-column 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
+(put 'erase-buffer 'disabled nil)
