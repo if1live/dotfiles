@@ -167,15 +167,23 @@ function Android::init {
 
 function Android::sdk_init {
 	Android::set_sdk_dir ""
-	local ANDROID_SDK_NAME="android-sdk-linux"
+	ANDROID_SDK_NAME_LIST=(
+		# for linux
+		"android-sdk-linux"
+		# for osx
+		"android-sdk-macosx"
+		"adt-bundle-mac-x86_64"
+	)
 
 	# find android sdk
 	for ANDROID_ROOT_DIR in ${ANDROID_ROOT_DIR_LIST[@]}; do
-		local TARGET_DIR=${ANDROID_ROOT_DIR}/${ANDROID_SDK_NAME}
-		if [ -d $TARGET_DIR ]; then
-			Android::set_sdk_dir $TARGET_DIR
-			return
-		fi
+		for android_sdk_name in ${ANDROID_SDK_NAME_LIST[@]}; do
+			local TARGET_DIR=${ANDROID_ROOT_DIR}/${android_sdk_name}
+			if [ -d $TARGET_DIR ]; then
+				Android::set_sdk_dir $TARGET_DIR
+				return
+			fi
+		done
 	done
 }
 
@@ -216,6 +224,7 @@ function Android::set_ndk_dir {
 		unset ANDROID_NDK_ROOT
 		unset NDK_ROOT
 	else
+		# example : android-ndk-r8e 
 		export ANDROID_NDK_VERSION=`expr "$1" : '.*ndk-\(r[0-9]*[a-z]\)'`
 		export ANDROID_NDK_ROOT=$1
 		export NDK_ROOT=$1
