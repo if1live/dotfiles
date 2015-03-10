@@ -85,6 +85,7 @@
 ;; slim-mode
 ;; web-mode
 ;; scss-mode
+;; highlight-current-line
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -438,6 +439,12 @@
 ;; enable in all programming-related modes
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; // rainbow-delemiters
+
+;; highlight-current-line
+;; http://emacsblog.org/2007/04/09/highlight-the-current-line/
+(highlight-current-line-on t)
+(set-face-background 'highlight-current-line-face "light yellow")
+;; // highlight-current-line
 
 ;; // External Plugin
 ;;;;;;;;;;;;;;;;;;;;;
