@@ -292,6 +292,10 @@ function Ruby::init {
 	eval "$(rbenv init -)" || 1
 }
 
+function Emacs::init {
+	export PATH="$HOME/.cask/bin:$PATH"
+}
+
 function MacOSX::init {
 	if [ ! -d "/Applications" ]; then
 		return
@@ -341,6 +345,7 @@ Shell::init
 System::init
 System::display
 Ruby::init
+Emacs::init
 Android::init
 Android::display
 MacOSX::init

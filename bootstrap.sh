@@ -76,6 +76,17 @@ function install_rbenv {
 	fi
 }
 
+function install_emacs {
+	if [ ! -d "$HOME/.cask" ]; then
+		curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+	else
+		echo "cask already exist"
+	fi
+
+	cd "$HOME/.emacs.d"
+	cask
+}
+
 case "$1" in
 	"core")
 		echo "# Install core"
@@ -93,8 +104,12 @@ case "$1" in
 		echo "# Install rbenv"
 		install_rbenv
 		;;
+	"emacs")
+		echo "# Install emacs"
+		install_emacs
+		;;
 	*)
 		echo "# unknown command"
-		echo "select core, linm, oh-my-zsh, rbenv"
+		echo "select core, linm, oh-my-zsh, rbenv, emacs"
 		;;
 esac
