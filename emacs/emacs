@@ -403,9 +403,9 @@
 ;; External Plugin
 
 ;; twittering-mode
-(require 'twittering-mode)
-(setq twittering-use-master-password t)
-(twittering-enable-unread-status-notifier)
+;(require 'twittering-mode)
+;(setq twittering-use-master-password t)
+;(twittering-enable-unread-status-notifier)
 ;; //twittering-mode
 
 
@@ -417,6 +417,7 @@
 
 ;; highlight-current-line
 ;; http://emacsblog.org/2007/04/09/highlight-the-current-line/
+(require 'highlight-current-line)
 (highlight-current-line-on t)
 
 ;; putty
