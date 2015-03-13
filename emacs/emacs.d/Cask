@@ -1,0 +1,45 @@
+(source "melpa" "http://melpa.milkbox.net/packages/")
+(source "gnu" "http://elpa.gnu.org/packages/")
+(source "marmalade" "http://marmalade-repo.org/packages/")
+
+;; sample
+(depends-on "cask")
+(depends-on "auto-complete")
+(depends-on "dash")
+(depends-on "f")
+(depends-on "flycheck")
+(depends-on "helm")
+(depends-on "magit")
+(depends-on "popup")
+(depends-on "projectile")
+(depends-on "s")
+(depends-on "smartparens")
+(depends-on "yasnippet")
+
+;; TODO rst-mode not exist in packages
+;; embeded?
+;; (depends-on "rst-mode")
+
+;; document
+(depends-on "markdown-mode")
+
+;; ide
+(depends-on "highlight-current-line")
+(depends-on "rainbow-delimiters")
+(depends-on "w3")
+
+;; ruby
+(depends-on "ruby-end")
+(depends-on "web-mode") ;; for erb
+(depends-on "slim-mode")
+(depends-on "scss-mode")
+(depends-on "yaml-mode")
+
+;; python
+(depends-on "jinja2-mode")
+(depends-on "jedi")
+
+;; javascript
+(depends-on "coffee-mode")
+
+;; etc
