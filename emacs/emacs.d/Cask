@@ -27,6 +27,7 @@
 (depends-on "highlight-current-line")
 (depends-on "rainbow-delimiters")
 (depends-on "w3")
+(depends-on "cmake-mode")
 
 ;; ruby
 (depends-on "ruby-end")
