@@ -354,3 +354,6 @@ Local::init
 # automatic added
 # added by travis gem
 [ -f /home/haruna/.travis/travis.sh ] && source /home/haruna/.travis/travis.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
