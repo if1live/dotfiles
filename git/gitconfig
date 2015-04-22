@@ -5,7 +5,7 @@
 [alias]
     # http://www.mediawiki.org/wiki/Git/aliases
     amend     = commit --amend -a
-    br        = branch 
+    br        = branch
     co        = checkout
     ds        = diff --staged
     di        = diff
@@ -24,6 +24,9 @@
     lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
     lg = !"git lg1"
     short-name = actual (long?) command
+
+    # http://stackoverflow.com/questions/927358/how-to-undo-the-last-commit
+    undo-commit = reset --soft HEAD^
 
 [color]
 	diff = auto
@@ -47,7 +50,7 @@
 	ui = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
