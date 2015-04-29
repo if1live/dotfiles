@@ -58,21 +58,31 @@ function System::release_name {
 	DEBIAN_RELEASE_FILE="/etc/lsb-release"
 	REDHAT_RELEASE_FILE="/etc/redhat-release"
 
+	# OS_TYPE : linux / osx / unknown ...
+	# 맥의 경우는 환경설정이 달라질때가 많다.
+	# 매번 확인하기 귀찮아서 환경변수로 설정
+
 	if [ -f $DEBIAN_RELEASE_FILE ]; then
 		# ubuntu, debian, etc
 		local DIST_NAME=`sed -n 's/^DISTRIB_ID=//p' $DEBIAN_RELEASE_FILE`
 		local DIST_VERSION=`sed -n 's/^DISTRIB_RELEASE=//p' $DEBIAN_RELEASE_FILE`
 		DIST_FULLNAME="$DIST_NAME $DIST_VERSION"
+		export OS_TYPE="linux"
 	elif [ -f $REDHAT_RELEASE_FILE ]; then
 		# centos
 		DIST_FULLNAME=`cat $REDHAT_RELEASE_FILE`
+		export OS_TYPE="linux"
 	elif [ -d "/Applications" ]; then
+		# 맥인지 확인하는 무식한 방법
+		# 설마 리눅스에서 /Applications 디렉토리를 만들겠어?
 		local DIST_NAME=$(sw_vers -productName)
 		local DIST_VERSION=$(sw_vers -productVersion)
 		local DIST_BUILD=$(sw_vers -buildVersion)
 		DIST_FULLNAME="$DIST_NAME $DIST_VERSION $DIST_BUILD"
+		export OS_TYPE="osx"
 	else
 		DIST_FULLNAME="Unknown Distribution"
+		export OS_TYPE="unknown"
 	fi
 }
 
@@ -105,6 +115,7 @@ function System::display {
 	echo "Hello, $USER."
 	echo ""
 	echo "## Environment"
+	echo "OS Type\t\t: ${OS_TYPE}"
 	echo "User\t\t: ${USER}"
 	echo "Computer\t: ${DIST_FULLNAME}"
 	echo "Environment\t: ${ENV_NAME}"
@@ -285,6 +296,17 @@ function Android::setup {
 	sudo apt-get install lib32stdc++6 lib32z1
 }
 
+function Nodejs::init {
+	# nvm
+	mkdir -p $HOME/.nvm
+	export NVM_DIR=$HOME/.nvm
+
+	if [[ $OS_TYPE == "osx" ]]; then
+		# OSX : brew + nvm
+		source $(brew --prefix nvm)/nvm.sh
+	fi
+}
+
 
 function Ruby::init {
 	export PATH="$HOME/.rbenv/bin:$PATH"
@@ -297,7 +319,7 @@ function Emacs::init {
 }
 
 function MacOSX::init {
-	if [ ! -d "/Applications" ]; then
+	if [[ $OS_TYPE == "osx" ]]; then
 		return
 	fi
 
@@ -344,11 +366,18 @@ Zsh::init
 Shell::init
 System::init
 System::display
-Ruby::init
+
+# OSX 초기화를 먼저 하지 않으면 brew로 문제 생길 가능성이 있다
+MacOSX::init
+
 Emacs::init
 Android::init
 Android::display
-MacOSX::init
+
+# 언어 관련 설정은 나중
+Ruby::init
+Nodejs::init
+
 Local::init
 
 # automatic added
