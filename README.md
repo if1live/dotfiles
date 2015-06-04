@@ -18,6 +18,12 @@ virtualenv base
 # create dotfile symbolic link
 pip install -r requirements.txt
 python -m easylinker.cli meta-core.txt
+
+# emacs package
+cd ~/.emacs.d
+Cask
+
+# visual studio
 python -m easylinker.cli meta-vs.txt
 ```
 
