@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite the default settings
+{
+  "editor.renderWhitespace": true,
+  "search.excludeFolders": [
+    ".git",
+    "node_modules",
+    "bower_components",
+    "bower-components"
+  ]
+}
