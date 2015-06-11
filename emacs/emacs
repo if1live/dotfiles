@@ -23,12 +23,12 @@
 ;; 윈도우 + 나눔고딕코딩
 (custom-set-faces
  '(default ((t (
-    :family "NanumGothicCoding"
-    :foundry "outline"
-    :slant normal
-    :weight normal
-    :height 143
-    :width normal)))))
+                :family "NanumGothicCoding"
+                        :foundry "outline"
+                        :slant normal
+                        :weight normal
+                        :height 143
+                        :width normal)))))
 
 ;; 리눅스 한글 설정: 나눔고딕코딩
 ;; http://kiros33.blog.me/130138066686
@@ -87,10 +87,10 @@
 
 (defun set-color-theme-dispatch-platform ()
   (if (eq system-type 'windows-nt)
-    ;; for windows
-    (color-theme-euphoria)
-    ;; other platform, like linux console + putty
-    (color-theme-lethe)))
+      ;; for windows
+      (color-theme-euphoria)
+      ;; other platform, like linux console + putty
+      (color-theme-lethe)))
 (set-color-theme-dispatch-platform)
 
 ;;(color-theme-dark-laptop)
@@ -144,7 +144,7 @@
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
-    (delete-trailing-whitespace)))
+      (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
@@ -161,14 +161,14 @@
   (interactive)
   (set-buffer-file-coding-system 'utf-8-dos t))
 
-;(defun no-dos-please-were-unixish ()
-;  (let ((coding-str (symbol-name buffer-file-coding-system)))
-;    (when (string-match "-dos$" coding-str)
-;      (setq coding-str
-;            (concat (substring coding-str 0 (match-beginning 0)) "-unix"))
-;      (message "CODING: %s" coding-str)
-;      (set-buffer-file-coding-system (intern coding-str)))))
-;(add-hook 'find-file-hooks 'no-dos-please-were-unixish)
+;;(defun no-dos-please-were-unixish ()
+;;  (let ((coding-str (symbol-name buffer-file-coding-system)))
+;;    (when (string-match "-dos$" coding-str)
+;;      (setq coding-str
+;;            (concat (substring coding-str 0 (match-beginning 0)) "-unix"))
+;;      (message "CODING: %s" coding-str)
+;;      (set-buffer-file-coding-system (intern coding-str)))))
+;;(add-hook 'find-file-hooks 'no-dos-please-were-unixish)
 
 ;; // Editor Common
 ;;;;;;;;;;;;;;;;;;;;;
@@ -188,7 +188,7 @@
 
 ;; http://stackoverflow.com/questions/8246483/emacs-how-to-disable-files-creation
 (setq auto-save-file-name-transforms
-    `((".*" ,temporary-file-directory t)))
+      `((".*" ,temporary-file-directory t)))
 ;; // temp / backup file
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -201,6 +201,8 @@
 ;; lisp
 (add-hook 'lisp-mode-hook
   (lambda ()
+    (setq indent-tabs-mode nil)
+    (setq tab-width 2)
     (set (make-local-variable 'lisp-indent-function)
          'common-lisp-indent-function)))
 ;; // lisp
@@ -212,7 +214,7 @@
 (add-to-list 'auto-mode-alist '(".emacs" . lisp-mode))
 (add-hook 'emacs-lisp-mode-hook
   (lambda ()
-    (setq tab-witth 2)
+    (setq tab-width 2)
     ;; Use spaces, not tabs.
     (setq indent-tabs-mode nil)
     (put 'add-hook 'lisp-indent-function 1)
@@ -239,8 +241,9 @@
 
 ;;;;;;;;;
 ;; Python
-(add-hook 'python-mode-hook '(lambda ()
-  (setq python-indent 4)))
+(add-hook 'python-mode-hook
+  (lambda ()
+    (setq python-indent 4)))
 
 ;; jedi - python ide
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -318,8 +321,8 @@
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs")
 (autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
 (add-to-list
-  'auto-mode-alist
-  '("\\.m$" . matlab-mode))
+ 'auto-mode-alist
+ '("\\.m$" . matlab-mode))
 (setq matlab-indent-function t)
 (setq matlab-shell-command "matlab")
 ;; // matlab
@@ -329,7 +332,7 @@
 ;; markdown
 ;; http://jblevins.org/projects/markdown-mode/
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
@@ -368,12 +371,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; web-mode - for erb (ruby template engine)
 ;; http://web-mode.org/
-(add-to-list 'auto-mode-alist '("\.erb$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
 (add-hook 'web-mode-hook
   (lambda ()
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 2)
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)))
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-attr-indent-offset 2)))
+
+(setq web-mode-extra-auto-pairs
+      '(("erb" . (("beg" "end")))
+        ("php" . (("beg" "end")
+                  ("beg" "end")))
+        ))
+
+(setq web-mode-enable-auto-pairing t)
+
 ;; // web-mode
 ;;;;;;;;;;;;;;
 
@@ -392,17 +414,17 @@
 ;;;;;;
 ;; vcs
 (setq
-  ;; don't show annoing startup msg
-  inhibit-startup-message t
-  ;; NO annoing backups
-  make-backup-files nil
-  ;; make sure file ends with NEWLINE
-  require-final-newline t
-  ;; follow symlinks and don't ask
-  vc-follow-symlinks t
-  ;; display time in the modeline
-  display-time-24hr-format t
-  display-time-day-and-date t)
+ ;; don't show annoing startup msg
+ inhibit-startup-message t
+ ;; NO annoing backups
+ make-backup-files nil
+ ;; make sure file ends with NEWLINE
+ require-final-newline t
+ ;; follow symlinks and don't ask
+ vc-follow-symlinks t
+ ;; display time in the modeline
+ display-time-24hr-format t
+ display-time-day-and-date t)
 ;; // vcs
 ;;;;;;;;;
 
@@ -411,9 +433,9 @@
 ;; External Plugin
 
 ;; twittering-mode
-;(require 'twittering-mode)
-;(setq twittering-use-master-password t)
-;(twittering-enable-unread-status-notifier)
+;;(require 'twittering-mode)
+;;(setq twittering-use-master-password t)
+;;(twittering-enable-unread-status-notifier)
 ;; //twittering-mode
 
 
