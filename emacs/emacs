@@ -448,6 +448,15 @@
 ;; // vcs
 ;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;
+;; whitespace-mode
+;; http://emacswiki.org/emacs/WhiteSpace
+(require 'whitespace)
+(autoload 'whitespace-mode           "whitespace" "Toggle whitespace visualization."        t)
+(autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
+(setq whitespace-style (quote (spaces tabs space-mark tab-mark)))
+;; // whitespace-mode
+;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;
 ;; External Plugin
