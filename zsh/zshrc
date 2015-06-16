@@ -154,6 +154,12 @@ function Shell::alias {
 	alias cd.....='cd ../../../..'
 	alias cd......='cd ../../../../..'
 
+	# cls is dos command. but it is short than clear.
+	alias cls='clear'
+
+	# use color
+	alias less='less -R'
+
 	# https://twitter.com/liamosaur/status/506975850596536320
 	# fuck is sudo with previous command
 	# below command work on bash, not zsh.
