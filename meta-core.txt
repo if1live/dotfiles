@@ -23,3 +23,6 @@ vim/vimrc -> {{HOME}}/.vimrc
 
 # zsh
 zsh/zshrc -> {{HOME}}/.zshrc
+
+# rtorrent
+rtorrent/rtorrent.rc -> {{HOME}}/.rtorrent.rc
