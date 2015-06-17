@@ -1,6 +1,10 @@
 #!/bin/bash
 
 function install_core {
+	# locale
+	sudo locale-gen ko_KR
+	sudo locale-gen ko_KR.UTF-8
+
 	# version control system
 	sudo apt-get install -qq git subversion mercurial
 
@@ -9,12 +13,6 @@ function install_core {
 
 	# python
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
-
-	# node
-	sudo apt-get install -qq nodejs
-	if [ ! -f /usr/bin/node ]; then
-		sudo ln -s /usr/bin/nodejs /usr/bin/node
-	fi
 
 	# core util
 	sudo apt-get install -qq tree unzip
