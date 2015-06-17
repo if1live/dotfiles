@@ -310,6 +310,8 @@ function Nodejs::init {
 	if [[ $OS_TYPE == "osx" ]]; then
 		# OSX : brew + nvm
 		source $(brew --prefix nvm)/nvm.sh
+	else
+		. ~/.nvm/nvm.sh
 	fi
 }
 

@@ -45,6 +45,14 @@ function install_oh_my_zsh {
 	git clone https://github.com/yonchu/grunt-zsh-completion.git "$OHMYZSH_CUSTOM_PLUGIN_PATH/grunt"
 }
 
+function install_nvm {
+	git clone https://github.com/creationix/nvm.git ~/.nvm
+	cd ~/.nvm
+	git checkout `git describe --abbrev=0 --tags`
+	. ~/.nvm/nvm.sh
+	cd -
+}
+
 function install_rbenv {
 	# https://gorails.com/setup/ubuntu/14.04
 	sudo apt-get install -qq git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
@@ -106,8 +114,12 @@ case "$1" in
 		echo "# Install emacs"
 		install_emacs
 		;;
+	"nvm")
+		echo "# Install nvm"
+		install_nvm
+		;;
 	*)
 		echo "# unknown command"
-		echo "select core, linm, oh-my-zsh, rbenv, emacs"
+		echo "select core, linm, oh-my-zsh, rbenv, emacs, nvm"
 		;;
 esac
