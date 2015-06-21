@@ -44,3 +44,4 @@
 (depends-on "coffee-mode")
 
 ;; etc
+(depends-on "io-mode")
