@@ -31,7 +31,7 @@
 
 ;; ruby
 (depends-on "ruby-end")
-(depends-on "web-mode") ;; for erb
+(depends-on "web-mode")
 (depends-on "slim-mode")
 (depends-on "scss-mode")
 (depends-on "yaml-mode")
@@ -45,3 +45,7 @@
 
 ;; etc
 (depends-on "io-mode")
+
+(depends-on "gitattributes-mode")
+(depends-on "gitconfig-mode")
+(depends-on "gitignore-mode")
