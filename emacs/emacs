@@ -344,6 +344,13 @@
 ;; // markdown
 ;;;;;;;;;;;;;;
 
+;;;;;;;;;
+;; Prolog
+;; perl을 쓰진 않을테니까 .pl을 Prolog로 변경
+(add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
+;; // Prolog
+;;;;;;;;;;;;
+
 ;;;;;;;
 ;; ruby
 ;; http://stackoverflow.com/questions/6453955/how-do-i-prevent-emacs-from-adding-coding-information-in-the-first-line
