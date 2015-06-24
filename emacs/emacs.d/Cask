@@ -43,9 +43,16 @@
 ;; javascript
 (depends-on "coffee-mode")
 
+;; haskell
+(depends-on "haskell-mode")
+(depends-on "ghc")
+
 ;; etc
 (depends-on "io-mode")
+(depends-on "erlang")
+(depends-on "scala-mode2")
 
+;; git
 (depends-on "gitattributes-mode")
 (depends-on "gitconfig-mode")
 (depends-on "gitignore-mode")
