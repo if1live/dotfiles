@@ -1,6 +1,12 @@
+;; Reference
+;; http://blog.nacyot.com/articles/2014-06-01-emacs-with-cask/
+
 (source "melpa" "http://melpa.milkbox.net/packages/")
 (source "gnu" "http://elpa.gnu.org/packages/")
 (source "marmalade" "http://marmalade-repo.org/packages/")
+(source "SC" "http://joseito.republika.pl/sunrise-commander/")
+(source "org" "http://orgmode.org/elpa/")
+
 
 ;; sample
 (depends-on "cask")
