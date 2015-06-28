@@ -392,6 +392,7 @@
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.ejs" . web-mode))
 ;; etc
+(add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -409,8 +410,8 @@
     (setq web-mode-code-indent-offset 2)
     (setq web-mode-attr-indent-offset 2)
     ;; left padding
-    (setq web-mode-style-padding 1)
-    (setq web-mode-script-padding 1)
+    (setq web-mode-style-padding 2)
+    (setq web-mode-script-padding 2)
     (setq web-mode-block-padding 0)
     ;; comment
     (setq web-mode-comment-style 2)))
@@ -433,6 +434,12 @@
 
 ;; // yaml-mode
 ;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;
+;; dockerfile-mode
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+;; // dockerfile-mode
+;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; // Language + Language Plugin

@@ -57,6 +57,7 @@
 (depends-on "io-mode")
 (depends-on "erlang")
 (depends-on "scala-mode2")
+(depends-on "dockerfile-mode")
 
 ;; git
 (depends-on "gitattributes-mode")
