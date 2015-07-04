@@ -15,10 +15,23 @@ function install_core {
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
 
 	# core util
-	sudo apt-get install -qq tree unzip
+	sudo apt-get install -qq tree unzip zip htop
+}
+
+function install_web_dev {
+	sudo apt-get install -qq nginx memcached redis-server
 
 	# heroku
 	wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+	# docker
+	# docker 중복설치하면 경고떠서 가장 마지막에 배치
+	wget -qO- https://get.docker.com/ | sh
+	sudo usermod -aG docker $USER
+}
+
+function install_cpp_dev {
+	sudo apt-get install -qq clang cmake make
 }
 
 function install_linm {
@@ -153,6 +166,14 @@ case "$1" in
 		echo "# Install autoenv"
 		install_autoenv
 		;;
+	"cpp_dev")
+		echo "# Install c++ dev"
+		install_cpp_dev
+		;;
+	"web_dev")
+		echo "# Install web dev"
+		install_web_dev
+		;;
 	*)
 		echo "# unknown command"
 		echo "core"
@@ -163,5 +184,7 @@ case "$1" in
 		echo "emacs"
 		echo "nvm"
 		echo "autoenv"
+		echo "cpp_dev"
+		echo "web_dev"
 		;;
 esac
