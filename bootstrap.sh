@@ -32,6 +32,10 @@ function install_linm {
 }
 
 function install_oh_my_zsh {
+	sudo apt-get install -qq zsh
+	echo "change shell to zsh"
+	chsh -s /usr/bin/zsh
+
 	if [ ! -d ~/.oh-my-zsh ]; then
 		# https://github.com/robbyrussell/oh-my-zsh
 		curl -L http://install.ohmyz.sh | sh
