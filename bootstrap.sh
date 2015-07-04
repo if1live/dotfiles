@@ -60,6 +60,16 @@ function install_nvm {
 	cd -
 }
 
+function install_pyenv {
+	[ -z "$PYENV_ROOT" ] && export PYENV_ROOT="$HOME/.pyenv"
+
+	if [ ! -d $PYENV_ROOT ]; then
+		git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
+	else
+		echo "rbenv already exist"
+	fi
+}
+
 function install_rbenv {
 	# https://gorails.com/setup/ubuntu/14.04
 	sudo apt-get install -qq git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
@@ -117,6 +127,10 @@ case "$1" in
 		echo "# Install rbenv"
 		install_rbenv
 		;;
+	"pyenv")
+		echo "# Install pyenv"
+		install_pyenv
+		;;
 	"emacs")
 		echo "# Install emacs"
 		install_emacs
@@ -127,6 +141,12 @@ case "$1" in
 		;;
 	*)
 		echo "# unknown command"
-		echo "select core, linm, oh-my-zsh, rbenv, emacs, nvm"
+		echo "core"
+		echo "linm"
+		echo "oh-my-zsh"
+		echo "rbenv"
+		echo "pyenv"
+		echo "emacs"
+		echo "nvm"
 		;;
 esac

@@ -325,12 +325,18 @@ function Ruby::init {
 	eval "$(rbenv init -)" || 1
 }
 
+function Python::init {
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)" || 1
+}
+
 function Emacs::init {
 	export PATH="$HOME/.cask/bin:$PATH"
 }
 
 function MacOSX::init {
-	if [[ $OS_TYPE == "osx" ]]; then
+	if [[ $OS_TYPE != "osx" ]]; then
 		return
 	fi
 
@@ -387,6 +393,7 @@ Android::display
 
 # 언어 관련 설정은 나중
 Ruby::init
+Python::init
 Nodejs::init
 
 Local::init
