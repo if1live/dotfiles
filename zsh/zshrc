@@ -145,6 +145,8 @@ function Shell::init {
 	# ssh
 	export SSH_KEY_PATH="~/.ssh/id_rsa"
 
+	source ~/.autoenv/activate.sh
+
 	Shell::alias
 }
 
@@ -244,7 +246,7 @@ function Android::set_ndk_dir {
 		unset ANDROID_NDK_ROOT
 		unset NDK_ROOT
 	else
-		# example : android-ndk-r8e 
+		# example : android-ndk-r8e
 		export ANDROID_NDK_VERSION=`expr "$1" : '.*ndk-\(r[0-9]*[a-z]\)'`
 		export ANDROID_NDK_ROOT=$1
 		export NDK_ROOT=$1

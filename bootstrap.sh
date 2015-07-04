@@ -99,6 +99,10 @@ function install_rbenv {
 	fi
 }
 
+function install_autoenv {
+	git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
+}
+
 function install_emacs {
 	if [ ! -d "$HOME/.cask" ]; then
 		curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
@@ -139,6 +143,10 @@ case "$1" in
 		echo "# Install nvm"
 		install_nvm
 		;;
+	"autoenv")
+		echo "# Install autoenv"
+		install_autoenv
+		;;
 	*)
 		echo "# unknown command"
 		echo "core"
@@ -148,5 +156,6 @@ case "$1" in
 		echo "pyenv"
 		echo "emacs"
 		echo "nvm"
+		echo "autoenv"
 		;;
 esac
