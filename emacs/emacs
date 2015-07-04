@@ -157,6 +157,11 @@
     shell-script-mode
     slim-mode
     web-mode
+    prolog-mode
+    io-mode
+    scala-mode
+    erlang-mode
+    haskell-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
