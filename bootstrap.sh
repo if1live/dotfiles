@@ -16,6 +16,9 @@ function install_core {
 
 	# core util
 	sudo apt-get install -qq tree unzip
+
+	# heroku
+	wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 }
 
 function install_linm {
