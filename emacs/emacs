@@ -162,6 +162,7 @@
     scala-mode
     erlang-mode
     haskell-mode
+    gitignore-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
