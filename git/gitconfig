@@ -3,40 +3,43 @@
 	email = libsora25@gmail.com
 
 [alias]
-    # http://www.mediawiki.org/wiki/Git/aliases
-    amend     = commit --amend -a
-    br        = branch
-    co        = checkout
-    ds        = diff --staged
-    di        = diff
-    fetchall  = fetch -v --all
-    log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
-    # With git >= 1.8.3 you can use %C(auto) for the branch decorator (%d)
-    log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
-    log-me    = !UN=$(git config user.name)&& git log --author="\"$UN\"" --pretty=format:'%h %cd %s' --date=short
-    log-nice  = log --graph --decorate --pretty=oneline --abbrev-commit
-    panic     = !tar cvf ../git_panic.tar *
-    st        = status
-    wdiff     = diff --word-diff=plain
+	# http://www.mediawiki.org/wiki/Git/aliases
+	amend = commit --amend -a
+	br = branch
+	co = checkout
+	ds = diff --staged
+	di = diff
+	fetchall  = fetch -v --all
+	log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+	# With git >= 1.8.3 you can use %C(auto) for the branch decorator (%d)
+	log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+	log-me = !UN=$(git config user.name)&& git log --author="\"$UN\"" --pretty=format:'%h %cd %s' --date=short
+	log-nice = log --graph --decorate --pretty=oneline --abbrev-commit
+	panic  = !tar cvf ../git_panic.tar *
+	st = status
+	wdiff = diff --word-diff=plain
+	# http://stackoverflow.com/questions/25550582/how-to-show-space-and-tabs-with-git-diff
+	df = diff --ignore-space-at-eol -b -w --ignore-blank-lines
 
-    # http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
-    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
-    lg = !"git lg1"
-    short-name = actual (long?) command
+	# http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''		  %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	lg = !"git lg1"
+	short-name = actual (long?) command
 
-    # http://stackoverflow.com/questions/927358/how-to-undo-the-last-commit
-    undo-commit = reset --soft HEAD^
+	# http://stackoverflow.com/questions/927358/how-to-undo-the-last-commit
+	undo-commit = reset --soft HEAD^
 
 [color]
 	diff = auto
 	ui = true
 
 [core]
-    autocrfl = input
+	autocrfl = input
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [credential]
-    helper = cache --timeout=3600
+	helper = cache --timeout=3600
 
 [github]
 	user = if1live
@@ -46,11 +49,10 @@
 #[push]
 #	default = simple
 
-[colors]
-	ui = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
+
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

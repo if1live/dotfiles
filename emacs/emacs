@@ -163,6 +163,7 @@
     erlang-mode
     haskell-mode
     gitignore-mode
+    gitconfig-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
@@ -468,6 +469,12 @@
 
 ;; // dockerfile-mode
 ;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; git-mode
+(add-to-list 'auto-mode-alist '(".gitconfig\\'" . gitconfig-mode))
+;; // git-mode
+;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; // Language + Language Plugin
