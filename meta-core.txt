@@ -29,3 +29,6 @@ rtorrent/rtorrent.rc -> {{HOME}}/.rtorrent.rc
 
 # colordiff
 colordiff/colordiffrc -> {{HOME}}/.colordiffrc
+
+# visual studio code
+osx: vs_code/settings.json -> {{HOME}}/Library/Application Support/Code/User/settings.json
