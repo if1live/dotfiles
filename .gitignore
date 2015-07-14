@@ -17,3 +17,6 @@ nabi/nabi.log
 *.bak
 *#
 *~
+
+# for easylinker
+.venv

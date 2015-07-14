@@ -26,3 +26,6 @@ zsh/zshrc -> {{HOME}}/.zshrc
 
 # rtorrent
 rtorrent/rtorrent.rc -> {{HOME}}/.rtorrent.rc
+
+# colordiff
+colordiff/colordiffrc -> {{HOME}}/.colordiffrc
