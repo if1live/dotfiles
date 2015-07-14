@@ -14,6 +14,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; emacs base setting
+(package-initialize)
 ;; // emacs base setting
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -164,6 +165,8 @@
     haskell-mode
     gitignore-mode
     gitconfig-mode
+    gitattributes-mode
+    conf-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
