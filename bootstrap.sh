@@ -8,14 +8,20 @@ function install_core {
 	# version control system
 	sudo apt-get install -qq git subversion mercurial
 
-	# editor
-	sudo apt-get install -qq emacs emacs-goodies-el vim-common
+	# vim
+	sudo apt-get install -qq vim-common
 
 	# python
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
 
 	# core util
 	sudo apt-get install -qq tree unzip zip htop
+
+	# emacs
+	#sudo apt-get install -qq emacs-goodies-el
+	sudo add-apt-repository ppa:ubuntu-elisp/ppa
+	sudo apt-get update
+	sudo apt-get install emacs-snapshot
 }
 
 function install_web_dev {
