@@ -3,7 +3,7 @@
 
 (source "melpa" "http://melpa.milkbox.net/packages/")
 (source "gnu" "http://elpa.gnu.org/packages/")
-(source "marmalade" "http://marmalade-repo.org/packages/")
+(source "marmalade" "https://marmalade-repo.org/packages/")
 (source "SC" "http://joseito.republika.pl/sunrise-commander/")
 (source "org" "http://orgmode.org/elpa/")
 
@@ -21,6 +21,7 @@
 (depends-on "s")
 (depends-on "smartparens")
 (depends-on "yasnippet")
+(depends-on "color-theme")
 
 ;; TODO rst-mode not exist in packages
 ;; embeded?
