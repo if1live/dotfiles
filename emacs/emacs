@@ -470,6 +470,14 @@
 ;; // dockerfile-mode
 ;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;
+;; erlang-mode
+(add-hook 'erlang-mode-hook
+  (lambda ()
+    (setq c-basic-offset 4)))
+;; // erlang-mode
+;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; git-mode
 (add-to-list 'auto-mode-alist '(".gitconfig\\'" . gitconfig-mode))
