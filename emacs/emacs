@@ -14,6 +14,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; emacs base setting
+(package-initialize)
 ;; // emacs base setting
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -69,6 +70,9 @@
 ;; Alt-F4 = quit
 (global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
 
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 ;; // Key Map
 ;;;;;;;;;;;;;
 
@@ -164,6 +168,8 @@
     haskell-mode
     gitignore-mode
     gitconfig-mode
+    gitattributes-mode
+    conf-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)

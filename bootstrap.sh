@@ -6,16 +6,28 @@ function install_core {
 	sudo locale-gen ko_KR.UTF-8
 
 	# version control system
-	sudo apt-get install -qq git subversion mercurial
+	sudo apt-get install -qq subversion mercurial
 
-	# editor
-	sudo apt-get install -qq emacs emacs-goodies-el vim-common
+	# git
+	sudo apt-get install -qq git git-flow
+
+	# vim
+	sudo apt-get install -qq vim-common
 
 	# python
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
 
 	# core util
 	sudo apt-get install -qq tree unzip zip htop
+}
+
+function install_core_emacs {
+	# ubuntu 14.10 -> emacs 24.3
+	# magit require emacs >= 24.4
+	# so, use ppa to use latest emacs
+	sudo add-apt-repository ppa:ubuntu-elisp/ppa
+	sudo apt-get update
+	sudo apt-get install emacs-snapshot
 }
 
 function install_web_dev {
@@ -138,6 +150,10 @@ case "$1" in
 		echo "# Install core"
 		install_core
 		;;
+	"core_emacs")
+		echo "# Install core - emacs"
+		install_core_emacs
+		;;
 	"linm")
 		echo "# Install linm"
 		install_linm
@@ -177,6 +193,7 @@ case "$1" in
 	*)
 		echo "# unknown command"
 		echo "core"
+		echo "core_emacs"
 		echo "linm"
 		echo "oh-my-zsh"
 		echo "rbenv"
