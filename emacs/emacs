@@ -170,6 +170,8 @@
     gitconfig-mode
     gitattributes-mode
     conf-mode
+    makefile-mode
+    makefile-gmake-mode
     latex-mode))
 (defun my-delete-trailing-whitespace()
   (if (member major-mode delete-trailing-whitespace-language-list)
@@ -475,6 +477,14 @@
 
 ;; // dockerfile-mode
 ;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;
+;; erlang-mode
+(add-hook 'erlang-mode-hook
+  (lambda ()
+    (setq c-basic-offset 4)))
+;; // erlang-mode
+;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; git-mode
