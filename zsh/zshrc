@@ -159,6 +159,8 @@ function Shell::alias {
 	# cls is dos command. but it is short than clear.
 	alias cls='clear'
 
+	alias emasc='emacs'
+
 	# use color
 	alias less='less -R'
 
