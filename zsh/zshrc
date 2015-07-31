@@ -160,6 +160,7 @@ function Shell::alias {
 	alias cls='clear'
 
 	alias emasc='emacs'
+	alias e='emacs'
 
 	# use color
 	alias less='less -R'
