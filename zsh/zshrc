@@ -170,6 +170,8 @@ function Shell::alias {
 
 	alias ipconfig='ifconfig'
 
+	alias serve='python -m SimpleHTTPServer'
+
 	# https://twitter.com/liamosaur/status/506975850596536320
 	# fuck is sudo with previous command
 	# below command work on bash, not zsh.

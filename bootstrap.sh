@@ -18,7 +18,7 @@ function install_core {
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
 
 	# core util
-	sudo apt-get install -qq tree unzip zip htop
+	sudo apt-get install -qq tree unzip zip htop ack-grep most colordiff
 }
 
 function install_core_emacs {
