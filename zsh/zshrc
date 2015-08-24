@@ -147,6 +147,10 @@ function Shell::init {
 
 	source ~/.autoenv/activate.sh
 
+	# the fuck
+	# https://github.com/nvbn/thefuck
+	eval "$(thefuck --alias)"
+
 	Shell::alias
 }
 
@@ -172,14 +176,8 @@ function Shell::alias {
 
 	alias serve='python -m SimpleHTTPServer'
 
-	# https://twitter.com/liamosaur/status/506975850596536320
-	# fuck is sudo with previous command
-	# below command work on bash, not zsh.
-	# alias fuck='sudo $(history -p \!\!)'
-	# use simple command
-	# http://www.commandlinefu.com/commands/view/13/run-the-last-command-as-root
-	# sudo !!
-	#alias fuck='sudo $(!!)'
+	alias p2='python2'
+	alias p3='python3'
 }
 
 ANDROID_ROOT_DIR_LIST=(

@@ -19,6 +19,9 @@ function install_core {
 
 	# core util
 	sudo apt-get install -qq tree unzip zip htop ack-grep most colordiff
+
+	# fuck!
+	sudo pip install thefuck
 }
 
 function install_core_emacs {
