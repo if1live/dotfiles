@@ -165,6 +165,7 @@
     io-mode
     scala-mode
     erlang-mode
+    clojure-mode
     haskell-mode
     gitignore-mode
     gitconfig-mode
@@ -405,6 +406,13 @@
 ;; shell-script
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
 ;; // shell-script
+;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;
+;; haskell-mode
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; // haskell-mode
 ;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

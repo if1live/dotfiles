@@ -40,6 +40,7 @@
 (depends-on "ruby-end")
 (depends-on "web-mode")
 (depends-on "slim-mode")
+(depends-on "sass-mode")
 (depends-on "scss-mode")
 (depends-on "yaml-mode")
 
@@ -57,6 +58,7 @@
 ;; etc
 (depends-on "io-mode")
 (depends-on "erlang")
+(depends-on "clojure-mode")
 (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
 
