@@ -22,6 +22,9 @@ function install_core {
 
 	# fuck!
 	sudo pip install thefuck
+
+	# mosh
+	sudo apt-get install -qq mosh
 }
 
 function install_core_emacs {
