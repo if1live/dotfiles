@@ -48,6 +48,7 @@ function Zsh::init {
 		node npm grunt coffee
 		pip python fabric
 		ruby rails
+		thefuck
 	)
 
 	source $ZSH/oh-my-zsh.sh
