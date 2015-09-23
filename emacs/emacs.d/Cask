@@ -55,12 +55,16 @@
 (depends-on "haskell-mode")
 (depends-on "ghc")
 
-;; etc
+;; etc language
 (depends-on "io-mode")
 (depends-on "erlang")
 (depends-on "clojure-mode")
 (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
+(depends-on "go-mode")
+
+;; misc
+(depends-on "cloc")
 
 ;; git
 (depends-on "gitattributes-mode")

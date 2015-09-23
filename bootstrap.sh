@@ -17,14 +17,19 @@ function install_core {
 	# python
 	sudo apt-get install -qq python2.7-dev python-virtualenv python-pip
 
-	# core util
-	sudo apt-get install -qq tree unzip zip htop ack-grep most colordiff
-
 	# fuck!
 	sudo pip install thefuck
 
 	# mosh
 	sudo apt-get install -qq mosh
+}
+
+function install_core_util {
+	# core util
+	sudo apt-get install -qq tree unzip zip htop ack-grep most colordiff
+
+	# emacs additional package
+	sudo apt-get install -qq cloc
 }
 
 function install_core_emacs {
@@ -105,6 +110,10 @@ function install_pyenv {
 	else
 		echo "rbenv already exist"
 	fi
+
+	# pyenv + virtualenv 충돌 해결용
+	# https://github.com/yyuu/pyenv-virtualenv
+	git clone https://github.com/yyuu/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
 }
 
 function install_rbenv {
@@ -156,6 +165,10 @@ case "$1" in
 		echo "# Install core"
 		install_core
 		;;
+	"core_util")
+		echo "# Install core util"
+		install_core_util
+		;;
 	"core_emacs")
 		echo "# Install core - emacs"
 		install_core_emacs
@@ -199,6 +212,7 @@ case "$1" in
 	*)
 		echo "# unknown command"
 		echo "core"
+		echo "core_util"
 		echo "core_emacs"
 		echo "linm"
 		echo "oh-my-zsh"
