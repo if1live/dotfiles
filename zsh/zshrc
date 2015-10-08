@@ -113,7 +113,6 @@ function System::init {
 }
 
 function System::display {
-	echo "Hello, $USER."
 	echo ""
 	echo "## Environment"
 	echo "OS Type\t\t: ${OS_TYPE}"
@@ -241,10 +240,12 @@ function Android::ndk_init {
 function Android::set_sdk_dir {
 	if [[ "$1" == "" ]]; then
 		unset ANDROID_SDK_ROOT
+		unset ANDROID_HOME
 	else
 		export PATH=$1/platform-tools:$PATH
 		export PATH=$1/tools:$PATH
 		export ANDROID_SDK_ROOT=$1
+		export ANDROID_HOME=$1
 	fi
 }
 
@@ -272,9 +273,9 @@ function Android::display {
 	fi
 
 	if [[ $ANDROID_NDK_ROOT == "" ]]; then
-		echo "Android NDK is not exist"
+		echo "NDK is not exist"
 	else
-		echo "Android NDK(${ANDROID_NDK_VERSION}): ${ANDROID_NDK_ROOT}"
+		echo "NDK(${ANDROID_NDK_VERSION})\t: ${ANDROID_NDK_ROOT}"
 	fi
 
 	if [[ $NDK_CCACHE == "" ]]; then
@@ -287,13 +288,7 @@ function Android::display {
 
 function Android::ccache {
 	# ccache
-	local CCACHE_PATH=/usr/lib/ccache
-	if [ -d $CCACHE_PATH ]; then
-		export PATH=/usr/lib/ccache:$PATH
-		export NDK_CCACHE=`which ccache`
-	else
-		unset NDK_CCACHE
-	fi
+	export NDK_CCACHE=`which ccache`
 }
 
 
@@ -408,6 +403,8 @@ Python::init
 Nodejs::init
 
 Local::init
+
+echo "Hello, $USER."
 
 # automatic added
 # added by travis gem
