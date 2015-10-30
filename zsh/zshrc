@@ -170,7 +170,18 @@ function Shell::alias {
 	alias less='less -R'
 
 	# apt-get install ack-grep
-	alias ack='ack-grep'
+	# linux : ack-grep
+	# osx : ack
+	unalias ack 2> /dev/null
+	which ack > /dev/null 2> /dev/null
+	ack_exist_retval=$?
+	which ack-grep > /dev/null 2> /dev/null
+	ack_grep_exist_retval=$?
+
+	if [ $ack_grep_exist_retval == 0 ] && [ $ack_exist_retval != 0 ]; then
+		echo "[Shell] ack-grep found, ack not found => enable ack alias"
+		alias ack='ack-grep'
+	fi
 
 	alias ipconfig='ifconfig'
 
