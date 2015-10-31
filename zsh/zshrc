@@ -43,7 +43,7 @@ function Zsh::init {
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 	# Example format: plugins=(rails git textmate ruby lighthouse)
 	plugins=(
-		debian tmux
+		tmux
 		git github git-flow
 		node npm grunt coffee
 		pip python fabric

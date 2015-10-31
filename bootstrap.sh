@@ -30,6 +30,10 @@ function install_core_util {
 
 	# emacs additional package
 	sudo apt-get install -qq cloc
+
+	# https://github.com/ggreer/the_silver_searcher
+	# A code-searching tool similar to ack, but faster.
+	sudo apt-get install silversearcher-ag
 }
 
 function install_core_emacs {
