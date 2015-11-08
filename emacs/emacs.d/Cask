@@ -63,6 +63,8 @@
 (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
 (depends-on "go-mode")
+(depends-on "csharp-mode")
+(depends-on "php-mode")
 
 ;; misc
 (depends-on "cloc")

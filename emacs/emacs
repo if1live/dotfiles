@@ -158,6 +158,7 @@
     c-mode
     ruby-mode
     c++-mode
+    csharp-mode
     shell-script-mode
     slim-mode
     web-mode
@@ -228,6 +229,39 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language + Language Plugin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;
+;; c
+(add-hook 'c-mode-hook
+  (lambda()
+    (setq tab-width 2)
+    (setq c-basic-offset 2)
+    (setq indent-tabs-mode nil)))
+;; // c
+;;;;;;;
+
+;;;;;;
+;; c++
+(add-hook 'c++-mode-hook
+  (lambda()
+    (setq tab-width 2)
+    (setq c-basic-offset 2)
+    (setq indent-tabs-mode nil)))
+;; // c++
+;;;;;;;;;
+
+;;;;;;
+;; C#
+(add-hook 'csharp-mode-hook
+  (lambda()
+    (electric-pair-mode 1)
+    (c-set-style "java")
+    (setq tab-width 4)
+    (setq c-basic-offset 4)
+    (setq indent-tabs-mode nil)))
+(add-to-list 'auto-mode-alist '("\\.cs" . csharp-mode))
+;; // C#
+;;;;;;;;
 
 ;;;;;;;
 ;; lisp
@@ -420,7 +454,7 @@
 ;; http://web-mode.org/
 ;; css / html
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 ;; django / flask
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jinja2\\'" . web-mode))
