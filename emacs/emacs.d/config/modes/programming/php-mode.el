@@ -1,0 +1,10 @@
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(setq php-mode-force-pear t)
+(add-hook 'php-mode-hook
+  (lambda ()
+    (setq c-default-style "stroustrup")
+    (setq indent-tabs-mode nil)
+    (setq tab-width 4)
+    (setq c-basic-indent 4)))
