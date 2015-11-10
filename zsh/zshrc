@@ -126,7 +126,7 @@ function Shell::init {
 	# User configuration
 	export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 	export MANPATH="/usr/local/man:$MANPATH"
-	export PATH="/home/${USER}/bin:$PATH"
+	export PATH="$HOME/bin:$PATH"
 
 	# # Preferred editor for local and remote sessions
 	if [[ -n $SSH_CONNECTION ]]; then
