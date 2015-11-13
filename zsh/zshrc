@@ -151,6 +151,11 @@ function Shell::init {
 	# https://github.com/nvbn/thefuck
 	eval "$(thefuck --alias)"
 
+	# less + syntax highlight
+	# http://superuser.com/questions/117841/get-colors-in-less-command
+	export LESS='-R'
+	export LESSOPEN='|~/.lessfilter %s'
+
 	Shell::alias
 }
 
