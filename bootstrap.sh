@@ -20,6 +20,8 @@ function install_core {
 	# fuck!
 	sudo pip install thefuck
 
+	sudo pip install Pygments
+
 	# mosh
 	sudo apt-get install -qq mosh
 }
