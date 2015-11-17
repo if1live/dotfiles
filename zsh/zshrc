@@ -391,9 +391,62 @@ function Local::init {
 	echo ""
 }
 
+zmodload zsh/datetime
+
+function Dotfiles::init {
+	Dotfiles::update
+}
+
+function _current_epoch() {
+	echo $(( $EPOCHSECONDS / 60 / 60 / 24 ))
+}
+
+function Dotfiles::update_repo {
+	curr_path=$(pwd)
+	cd ~/.dotfiles
+	git pull origin master
+	cd $curr_path
+
+	Dotfiles::update_timestamp
+}
+function Dotfiles::update_timestamp {
+	echo "LAST_EPOCH=$(_current_epoch)" >! ~/.dotfiles-update
+}
+function Dotfiles::update {
+	# https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh
+
+	if [ -f ~/.dotfiles-update ]; then
+		. ~/.dotfiles-update
+
+		epoch_target=1
+
+		if [[ -z "$LAST_EPOCH" ]]; then
+			Dotfiles::update_timestamp && return 0;
+		fi
+
+		epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
+		if [ $epoch_diff -gt $epoch_target ]; then
+			if [ "$DISABLE_UPDATE_PROMPT" = "true" ]; then
+				_upgrade_zsh
+			else
+				echo "[Dotfiles] Would you like to check for updates? [Y/n]: \c"
+				read line
+				if [ "$line" = Y ] || [ "$line" = y ] || [ -z "$line" ]; then
+					Dotfiles::update_repo
+				else
+					Dotfiles::update_timestamp
+				fi
+			fi
+		fi
+	else
+		# create the timestamp file
+		Dotfiles::update_timestamp
+	fi
+}
 
 
 Zsh::init
+Dotfiles::init
 Shell::init
 System::init
 System::display
@@ -420,7 +473,3 @@ echo "Hello, $USER."
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-
-
-
