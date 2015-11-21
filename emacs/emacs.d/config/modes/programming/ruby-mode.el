@@ -11,3 +11,13 @@
 (add-to-list 'auto-mode-alist '("Rakefile\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.gemspec$" . ruby-mode))
+
+
+(require 'ruby-block)
+(ruby-block-mode t)
+;; do overlay
+(setq ruby-block-highlight-toggle 'overlay)
+;; display to minibuffer
+(setq ruby-block-highlight-toggle 'minibuffer)
+;; display to minibuffer and do overlay
+(setq ruby-block-highlight-toggle t)

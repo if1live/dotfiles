@@ -1,5 +1,5 @@
 ;; http://www.emacswiki.org/emacs/EmacsLispMode
-(add-to-list 'auto-mode-alist '(".emacs" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '(".emacs$" . emacs-lisp-mode))
 (add-hook 'emacs-lisp-mode-hook
   (lambda ()
     (setq tab-width 2)

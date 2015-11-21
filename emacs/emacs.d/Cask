@@ -15,17 +15,12 @@
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "helm")
-(depends-on "magit")
 (depends-on "popup")
 (depends-on "projectile")
 (depends-on "s")
 (depends-on "smartparens")
 (depends-on "yasnippet")
 (depends-on "color-theme")
-
-;; TODO rst-mode not exist in packages
-;; embeded?
-;; (depends-on "rst-mode")
 
 ;; document
 (depends-on "markdown-mode")
@@ -39,6 +34,11 @@
 
 ;; ruby
 (depends-on "ruby-end")
+(depends-on "rspec-mode")
+(depends-on "ruby-additional")
+(depends-on "ruby-block")
+
+;; web
 (depends-on "web-mode")
 (depends-on "slim-mode")
 (depends-on "sass-mode")
@@ -51,10 +51,20 @@
 
 ;; javascript
 (depends-on "coffee-mode")
+(depends-on "json-mode")
+(depends-on "typescript-mode")
 
 ;; haskell
 (depends-on "haskell-mode")
 (depends-on "ghc")
+
+;; scheme / racket
+(depends-on "scheme-complete")
+(depends-on "racket-mode")
+
+;; sql
+(depends-on "esqlite")
+(depends-on "sql-indent")
 
 ;; etc language
 (depends-on "io-mode")
@@ -68,8 +78,12 @@
 
 ;; misc
 (depends-on "cloc")
+(depends-on "twittering-mode")
 
 ;; git
 (depends-on "gitattributes-mode")
 (depends-on "gitconfig-mode")
 (depends-on "gitignore-mode")
+
+;; maagit require emacs 24.4
+;;(depends-on "magit")
