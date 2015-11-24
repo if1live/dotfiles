@@ -17,6 +17,7 @@
     c++-mode
     csharp-mode
     shell-script-mode
+    sh-mode
     slim-mode
     web-mode
     prolog-mode
