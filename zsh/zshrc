@@ -127,6 +127,8 @@ function Shell::init {
 	export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 	export MANPATH="/usr/local/man:$MANPATH"
 	export PATH="$HOME/bin:$PATH"
+	# golang : https://golang.org/doc/install
+	export PATH=$PATH:/usr/local/go/bin
 
 	# # Preferred editor for local and remote sessions
 	if [[ -n $SSH_CONNECTION ]]; then
