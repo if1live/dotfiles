@@ -16,6 +16,7 @@
     ruby-mode
     c++-mode
     csharp-mode
+    java-mode
     shell-script-mode
     sh-mode
     slim-mode
