@@ -6,6 +6,7 @@
 ;; http://stackoverflow.com/questions/6312202/detect-current-major-mode-in-emacs-from-lisp
 (defvar delete-trailing-whitespace-language-list
   '(lisp-mode
+    go-mode
     emacs-lisp-mode
     python-mode
     scheme-mode

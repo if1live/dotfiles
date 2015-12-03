@@ -166,6 +166,11 @@ function install_emacs {
 	cask
 }
 
+function install_go {
+	# https://github.com/nsf/gocode
+	go get -u github.com/nsf/gocode
+}
+
 case "$1" in
 	"core")
 		echo "# Install core"
@@ -203,6 +208,10 @@ case "$1" in
 		echo "# Install nvm"
 		install_nvm
 		;;
+	"go")
+		echo "# Instal go development env"
+		install_go
+		;;
 	"autoenv")
 		echo "# Install autoenv"
 		install_autoenv
@@ -226,6 +235,7 @@ case "$1" in
 		echo "pyenv"
 		echo "emacs"
 		echo "nvm"
+		echo "go"
 		echo "autoenv"
 		echo "cpp_dev"
 		echo "web_dev"

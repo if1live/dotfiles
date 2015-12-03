@@ -66,13 +66,17 @@
 (depends-on "esqlite")
 (depends-on "sql-indent")
 
+;; go
+(depends-on "go-mode")
+(depends-on "go-autocomplete")
+(depends-on "go-eldoc")
+
 ;; etc language
 (depends-on "io-mode")
 (depends-on "erlang")
 (depends-on "clojure-mode")
 (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
-(depends-on "go-mode")
 (depends-on "csharp-mode")
 (depends-on "php-mode")
 
