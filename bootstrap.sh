@@ -169,6 +169,8 @@ function install_emacs {
 function install_go {
 	# https://github.com/nsf/gocode
 	go get -u github.com/nsf/gocode
+	# https://godoc.org/golang.org/x/tools/cmd/goimports
+	go get -u golang.org/x/tools/cmd/goimports
 }
 
 case "$1" in

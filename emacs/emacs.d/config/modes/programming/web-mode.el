@@ -20,23 +20,27 @@
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 
+(defun my-web-mode-before-save-hook ()
+  (delete-trailing-whitespace))
 
-(add-hook 'web-mode-hook
-  (lambda ()
-    ;; basic tab
-    (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 2)
-    ;; indent
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
-    (setq web-mode-attr-indent-offset 2)
-    ;; left padding
-    (setq web-mode-style-padding 2)
-    (setq web-mode-script-padding 2)
-    (setq web-mode-block-padding 0)
-    ;; comment
-    (setq web-mode-comment-style 2)))
+(defun web-mode-setup ()
+  ;; basic tab
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  ;; indent
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-attr-indent-offset 2)
+  ;; left padding
+  (setq web-mode-style-padding 2)
+  (setq web-mode-script-padding 2)
+  (setq web-mode-block-padding 0)
+  ;; comment
+  (setq web-mode-comment-style 2)
+
+  (add-hook 'before-save-hook 'my-web-mode-before-save-hook))
+(add-hook 'web-mode-hook 'web-mode-setup)
 
 ;; Auto-pairs
 (setq web-mode-extra-auto-pairs

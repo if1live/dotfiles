@@ -21,3 +21,11 @@
 (setq ruby-block-highlight-toggle 'minibuffer)
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
+
+(defun my-ruby-before-save-hook ()
+  (delete-trailing-whitespace))
+
+(defun ruby-mode-setup ()
+  (add-hook 'before-save-hook 'my-ruby-before-save-hook))
+
+(add-hook 'ruby-mode-hook 'ruby-mode-setup)

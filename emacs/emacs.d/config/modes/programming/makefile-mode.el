@@ -1,5 +1,9 @@
-(defun my-makefile-mode-hook()
-  )
+(defun my-makefile-before-save-hook ()
+  (delete-trailing-whitespace))
 
-(add-hook 'makefile-gmake-mode-hook 'my-makefile-mode-hook)
-(add-hook 'makefile-mode-hook 'my-makefile-mode-hook)
+(defun makefile-mode-setup ()
+  ;; hooks
+  (add-hook 'before-save-hook 'my-makefile-before-save-hook))
+
+(add-hook 'makefile-gmake-mode-hook 'makefile-mode-setup)
+(add-hook 'makefile-mode-hook 'makefile-mode-setup)
