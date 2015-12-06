@@ -80,6 +80,10 @@
 (depends-on "csharp-mode")
 (depends-on "php-mode")
 
+;; auto-complete with company
+(depends-on "company")
+(depends-on "company-go")
+
 ;; misc
 (depends-on "cloc")
 (depends-on "twittering-mode")
