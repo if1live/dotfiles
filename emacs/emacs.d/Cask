@@ -44,6 +44,7 @@
 (depends-on "sass-mode")
 (depends-on "scss-mode")
 (depends-on "yaml-mode")
+(depends-on "less-css-mode")
 
 ;; python
 (depends-on "jinja2-mode")
