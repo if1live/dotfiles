@@ -24,6 +24,7 @@
 
 ;; document
 (depends-on "markdown-mode")
+(depends-on "markdown-toc")
 
 ;; ide
 (depends-on "highlight-current-line")
@@ -89,6 +90,8 @@
 ;; misc
 (depends-on "cloc")
 (depends-on "twittering-mode")
+(depends-on "smart-cursor-color")
+(depends-on "man-commands")
 
 ;; git
 (depends-on "gitattributes-mode")

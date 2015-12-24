@@ -12,6 +12,10 @@
 (setq next-line-add-newlines t)
 
 
+;; smart-cursor-color-mode
+(smart-cursor-color-mode +1)
+(hl-line-mode -1)
+
 ;; http://www.emacswiki.org/emacs/EndOfLineTips
 (defun unix-file ()
   "Change the current buffer to Latin 1 with Unix line-ends."
