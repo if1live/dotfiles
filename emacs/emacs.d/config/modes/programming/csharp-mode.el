@@ -1,3 +1,7 @@
+;; c-lang-defconst .. 관련 문제 발생시 ~/.emacs.d/ 를 다시 컴파일해보자
+;; http://stackoverflow.com/questions/1217180/
+;; C-u 0 M-x byte-recompile-directory
+
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (add-to-list 'auto-mode-alist '("\\.cs" . csharp-mode))
 

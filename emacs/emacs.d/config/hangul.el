@@ -11,13 +11,14 @@
                         :width normal)))))
 
 ;; 리눅스 한글 설정: 나눔고딕코딩
+;; 콘솔밖에 안쓰니까 폰트 설정 필요 없겠지?
 ;; http://kiros33.blog.me/130138066686
-(if (eq system-type 'gnu/linux)
-    (progn
-      (set-fontset-font "fontset-default"
-                        'korean-ksc5601
-                        "-unknown-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
-      (setq initial-frame-alist '((top . 10) (left . 100)))))
+;;(if (eq system-type 'gnu/linux)
+;;    (progn
+;;      (set-fontset-font "fontset-default"
+;;                        'korean-ksc5601
+;;                        "-unknown-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
+;;      (setq initial-frame-alist '((top . 10) (left . 100)))))
 ;; // Font
 ;;;;;;;;;;
 

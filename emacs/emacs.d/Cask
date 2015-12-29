@@ -11,16 +11,17 @@
 ;; sample
 (depends-on "cask")
 (depends-on "auto-complete")
+(depends-on "ag")
 (depends-on "dash")
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "helm")
 (depends-on "popup")
-(depends-on "projectile")
 (depends-on "s")
 (depends-on "smartparens")
 (depends-on "yasnippet")
 (depends-on "color-theme")
+(depends-on "rainbow-mode")
 
 ;; document
 (depends-on "markdown-mode")
@@ -32,12 +33,21 @@
 (depends-on "w3")
 (depends-on "cmake-mode")
 (depends-on "color-theme")
+(depends-on "projectile")
+(depends-on "ecb")
 
 ;; ruby
 (depends-on "ruby-end")
 (depends-on "rspec-mode")
 (depends-on "ruby-additional")
 (depends-on "ruby-block")
+(depends-on "ruby-dev")
+(depends-on "ruby-guard")
+(depends-on "ruby-tools")
+(depends-on "ruby-refactor")
+(depends-on "enh-ruby-mode")
+(depends-on "inf-ruby")
+(depends-on "robe")
 
 ;; web
 (depends-on "web-mode")
@@ -74,6 +84,10 @@
 (depends-on "go-autocomplete")
 (depends-on "go-eldoc")
 
+;; java
+(depends-on "jdee")
+(depends-on "java-imports")
+
 ;; etc language
 (depends-on "io-mode")
 (depends-on "erlang")
@@ -86,12 +100,19 @@
 ;; auto-complete with company
 (depends-on "company")
 (depends-on "company-go")
+(depends-on "company-c-headers")
+(depends-on "company-jedi")
+(depends-on "company-ghc")
+(depends-on "company-ghci")
+(depends-on "company-web")
+(depends-on "company-inf-ruby")
 
 ;; misc
 (depends-on "cloc")
 (depends-on "twittering-mode")
 (depends-on "smart-cursor-color")
 (depends-on "man-commands")
+(depends-on "achievements")
 
 ;; git
 (depends-on "gitattributes-mode")

@@ -9,7 +9,7 @@
 #####################
 emacs/.twittering-mode-icons.gz
 emacs/.twittering-mode.gpg
-emacs/emacs.d/.python-environments
+emacs/emacs.d/.*
 emacs/emacs.d/ac-comphist.dat
 emacs/emacs.d/eshell
 

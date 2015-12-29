@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\cask$" . lisp-mode))
+
 (defun my-lisp-before-save-hook ()
   (delete-trailing-whitespace))
 

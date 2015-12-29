@@ -6,11 +6,12 @@
 (add-to-list 'auto-mode-alist '("Gemfile.lock$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("rakefile\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 
 
 (require 'ruby-block)
@@ -22,10 +23,15 @@
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
 
+;; ruby-dev
+(autoload 'turn-on-ruby-dev "ruby-dev" nil t)
+
 (defun my-ruby-before-save-hook ()
   (delete-trailing-whitespace))
 
 (defun ruby-mode-setup ()
   (add-hook 'before-save-hook 'my-ruby-before-save-hook))
 
+(add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
+(add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
 (add-hook 'ruby-mode-hook 'ruby-mode-setup)
