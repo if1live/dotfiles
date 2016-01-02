@@ -338,10 +338,22 @@ function Nodejs::init {
 
 function Go::init {
 	# golang : https://golang.org/doc/install
-	export GOROOT=/usr/local/go
+	# goroot candidate
+	if [ -d /usr/local/go ]; then
+		export GOROOT=/usr/local/go
+	elif [ -d /usr/lib/go ]; then
+		export GOROOT=/usr/lib/go
+	fi
 	export GOPATH=$HOME/goprojects
 	mkdir -p $GOPATH
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+	# raspberry pi에서는 환경변수 추가세팅 안하면 문제 발생
+	# 아키텍쳐에 의한 버그
+	# https://www.raspberrypi.org/forums/viewtopic.php?f=34&t=10781
+	if [[ $(uname -m) == "armv6l" ]]; then
+		export GOARM="5"
+	fi
 }
 
 function Ruby::init {
