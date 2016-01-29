@@ -8,8 +8,7 @@ function Zsh::init {
 	# time that oh-my-zsh is loaded.
 	#ZSH_THEME="gianu"
 	#ZSH_THEME="cypher"
-	#ZSH_THEME="evan"
-	ZSH_THEME="example"
+	ZSH_THEME="rkj"
 
 	# Set this to use case-sensitive completion
 	# CASE_SENSITIVE="true"
