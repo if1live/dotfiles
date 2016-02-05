@@ -18,6 +18,10 @@
   ;; goimport
   (setq gofmt-command "goimports")
 
+  ;; go get -u github.com/golang/lint/golint
+  (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+  (require 'golint)
+
   ;; keyboard
   (local-set-key (kbd "M-.") 'godef-jump)
   (define-key (current-local-map) "\C-c\C-c" 'compile)
