@@ -5,6 +5,9 @@
   (delete-trailing-whitespace))
 
 (defun go-mode-setup ()
+  (setq tab-width 4)
+  (setq indent-tabs-mode 1)
+
   ;; https://github.com/nsf/gocode/tree/master/emacs-company
   ;; auto complete
   (setq company-tooltip-limit 20)                      ; bigger popup window
@@ -19,8 +22,9 @@
   (setq gofmt-command "goimports")
 
   ;; go get -u github.com/golang/lint/golint
-  (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
-  (require 'golint)
+  ;; TODO global go path?
+  ;;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+  ;;(require 'golint)
 
   ;; keyboard
   (local-set-key (kbd "M-.") 'godef-jump)

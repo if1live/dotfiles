@@ -1,5 +1,8 @@
 ;; web-mode - template engine (etc, etc)
 ;; http://web-mode.org/
+;; Reference
+;; http://cha1tanya.com/2015/06/20/configuring-web-mode-with-jsx.html
+
 ;; css / html
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
@@ -38,6 +41,11 @@
   (setq web-mode-block-padding 0)
   ;; comment
   (setq web-mode-comment-style 2)
+
+  (lambda ()
+    (if (equal web-mode-content-type "javascript")
+        (web-mode-set-content-type "jsx")
+        (message "now set to: %s" web-mode-content-type)))
 
   (add-hook 'before-save-hook 'my-web-mode-before-save-hook))
 (add-hook 'web-mode-hook 'web-mode-setup)
