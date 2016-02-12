@@ -494,6 +494,9 @@ Local::init
 
 echo "Hello, $USER."
 
+# gvm
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
 # automatic added
 # added by travis gem
 [ -f /home/haruna/.travis/travis.sh ] && source /home/haruna/.travis/travis.sh

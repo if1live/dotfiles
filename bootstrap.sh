@@ -170,6 +170,14 @@ function install_emacs {
 	cask
 }
 
+function install_gvm {
+	if [ ! -d "$HOME/.gvm" ]; then
+		bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+	else
+		echo "gvm already exist"
+	fi
+}
+
 function install_go {
 	# https://github.com/nsf/gocode
 	go get -u github.com/nsf/gocode
@@ -214,6 +222,10 @@ case "$1" in
 		echo "# Install nvm"
 		install_nvm
 		;;
+	"gvm")
+		echo "# Install gvm"
+		install_gvm
+		;;
 	"go")
 		echo "# Instal go development env"
 		install_go
@@ -241,6 +253,7 @@ case "$1" in
 		echo "pyenv"
 		echo "emacs"
 		echo "nvm"
+		echo "gvm"
 		echo "go"
 		echo "autoenv"
 		echo "cpp_dev"
