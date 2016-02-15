@@ -326,33 +326,68 @@ function Android::setup {
 }
 
 function Nodejs::init {
-	# nvm
-	. ~/.nvm/nvm.sh
+	if [[ -s $HOME/.nvm/nvm.sh ]]; then
+		. ~/.nvm/nvm.sh
+
+		nvm_version=$(nvm --version)
+		echo "nvm version : $nvm_version"
+	fi
 }
 
 function Go::init {
 	# raspberry pi에서는 환경변수 추가세팅 안하면 문제 발생
 	# 아키텍쳐에 의한 버그
 	# https://www.raspberrypi.org/forums/viewtopic.php?f=34&t=10781
-	if [[ $(uname -m) == "armv6l" ]]; then
-		export GOARM="5"
-	fi
+	# https://github.com/golang/go/wiki/GoArm
+	case $(uname -m) in
+		"armv5l")
+			export GOARM="5"
+			;;
+		"armv6l")
+			export GOARM="6"
+			;;
+		"armv7l")
+			export GOARM="7"
+			;;
+		"armv8l")
+			export GOARM="arm64"
+			;;
+	esac
 
-	# gvm
-	[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+	if [[ -s $HOME/.gvm/scripts/gvm ]]; then
+		source $HOME/.gvm/scripts/gvm
+
+		gvm_version=$(gvm version | sed 's/Go Version Manager //g')
+		echo "gvm version : $gvm_version"
+	fi
 }
 
 function Ruby::init {
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-	eval "$(rbenv init -)" || 1
+	RBENV_ROOT=$HOME/.rbenv
+
+	if [[ -s $RBENV_ROOT/bin/rbenv ]]; then
+		export PATH=$RBENV_ROOT/bin:$PATH
+		export PATH=$RBENV_ROOT/plugins/ruby-build/bin:$PATH
+
+		eval "$(rbenv init -)"
+
+		rbenv_version=$(rbenv 2>&1 > /dev/null | head -n 1 | sed 's/rbenv //g')
+		echo "rbenv version : $rbenv_version"
+	fi
 }
 
 function Python::init {
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init -)" || 1
-	eval "$(pyenv virtualenv-init -)" || 1
+	PYENV_ROOT="$HOME/.pyenv"
+
+	if [[ -s $PYENV_ROOT/bin/pyenv ]]; then
+		export PATH="$PYENV_ROOT/bin:$PATH"
+
+		eval "$(pyenv init -)" || 1
+		eval "$(pyenv virtualenv-init -)" || 1
+
+		pyenv_version=$(pyenv 2>&1 > /dev/null | head -n 1 | sed 's/pyenv //g')
+		echo "pyenv version : $pyenv_version"
+	fi
 }
 
 function Emacs::init {
@@ -492,6 +527,7 @@ Cocos2dX::init
 Travis::init
 
 # 언어 관련 설정은 나중
+echo "## Language"
 Ruby::init
 Python::init
 Nodejs::init
