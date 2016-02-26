@@ -85,6 +85,9 @@
 (depends-on "go-autocomplete")
 (depends-on "go-eldoc")
 
+;; rust
+(depends-on "rust-mode")
+
 ;; java
 (depends-on "jdee")
 (depends-on "java-imports")
@@ -121,4 +124,4 @@
 (depends-on "gitignore-mode")
 
 ;; maagit require emacs 24.4
-;;(depends-on "magit")
+(depends-on "magit")
