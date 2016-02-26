@@ -179,10 +179,10 @@ function install_gvm {
 }
 
 function install_go {
-	# https://github.com/nsf/gocode
 	go get -u github.com/nsf/gocode
-	# https://godoc.org/golang.org/x/tools/cmd/goimports
 	go get -u golang.org/x/tools/cmd/goimports
+	go get -u github.com/Perlmint/goautoenv
+	go get -u github.com/tools/godep
 }
 
 case "$1" in
