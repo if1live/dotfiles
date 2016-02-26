@@ -201,6 +201,7 @@ ANDROID_ROOT_DIR_LIST=(
 	~/android
 	/opt
 	/opt/android
+	/usr/local/opt
 )
 
 function Android::init {
@@ -212,6 +213,7 @@ function Android::init {
 function Android::sdk_init {
 	Android::set_sdk_dir ""
 	ANDROID_SDK_NAME_LIST=(
+		"android-sdk"
 		# for linux
 		"android-sdk-linux"
 		# for osx
