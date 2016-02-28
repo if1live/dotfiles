@@ -304,8 +304,10 @@ function Android::display {
 }
 
 function Android::ccache {
-	# ccache
 	export NDK_CCACHE=`which ccache`
+	if [[ $NDK_CCACHE == "ccache not found" ]]; then
+		$NDK_CCACHE=""
+	fi
 }
 
 
