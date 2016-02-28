@@ -189,6 +189,16 @@ function Shell::alias {
 
 	alias ipconfig='ifconfig'
 
+	# mcs/gmcs 둘다 돌아가도록
+	mcs_exist=$(which mcs > /dev/null 2> /dev/null; echo $?)
+	gmcs_exist=$(which gmcs > /dev/null 2> /dev/null; echo $?)
+	if [[ $mcs_exist == "0" ]] && [[ $gmcs_exist != "0" ]]; then
+		alias gmcs="mcs"
+	fi
+	if [[ $gmcs_exist == "0" ]] && [[ $mcs_exist != "0" ]]; then
+		alias mcs="gmcs"
+	fi
+
 	# not recommend. python embedded web server is slow
 	# user npm install -g http-server
 	alias serve='python -m SimpleHTTPServer'
