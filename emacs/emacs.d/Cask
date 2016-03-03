@@ -7,14 +7,19 @@
 (source "SC" "http://joseito.republika.pl/sunrise-commander/")
 (source "org" "http://orgmode.org/elpa/")
 
+;; package system
+(depends-on "cask")
+(depends-on "pallet")
 
 ;; sample
-(depends-on "cask")
 (depends-on "auto-complete")
 (depends-on "ag")
+(depends-on "bind-key")
+(depends-on "drag-stuff")
 (depends-on "dash")
 (depends-on "f")
 (depends-on "flycheck")
+(depends-on "flycheck-cask")
 (depends-on "helm")
 (depends-on "popup")
 (depends-on "s")
@@ -22,18 +27,19 @@
 (depends-on "yasnippet")
 (depends-on "color-theme")
 (depends-on "rainbow-mode")
+(depends-on "use-package")
 
 ;; document
 (depends-on "markdown-mode")
 (depends-on "markdown-toc")
 
 ;; ide
+(depends-on "idle-highlight-mode")
 (depends-on "highlight-current-line")
 (depends-on "rainbow-delimiters")
 (depends-on "w3")
 (depends-on "cmake-mode")
 (depends-on "color-theme")
-(depends-on "projectile")
 (depends-on "ecb")
 
 ;; ruby
@@ -101,6 +107,10 @@
 (depends-on "csharp-mode")
 (depends-on "php-mode")
 
+;; shell
+(depends-on "exec-path-from-shell")
+(depends-on "multi-eshell")
+
 ;; auto-complete with company
 (depends-on "company")
 (depends-on "company-go")
@@ -110,6 +120,15 @@
 (depends-on "company-ghci")
 (depends-on "company-web")
 (depends-on "company-inf-ruby")
+(depends-on "company-shell")
+
+;; Manage external services from within Emacs
+(depends-on "prodigy")
+
+;; file nav
+(depends-on "grizzl")
+(depends-on "projectile")
+(depends-on "go-projectile")
 
 ;; misc
 (depends-on "cloc")
@@ -118,6 +137,11 @@
 (depends-on "man-commands")
 (depends-on "achievements")
 (depends-on "undo-tree")
+(depends-on "popwin")
+(depends-on "multiple-cursors")
+
+;; A smart M-x enhancement for Emacs.
+(depends-on "smex")
 
 ;; git
 (depends-on "gitattributes-mode")
