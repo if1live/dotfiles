@@ -3,7 +3,6 @@ awesome -> {{HOME}}/.config/awesome
 
 # emacs
 emacs/emacs.d -> {{HOME}}/.emacs.d
-emacs/emacs -> {{HOME}}/.emacs
 
 # git
 git/gitconfig -> {{HOME}}/.gitconfig
