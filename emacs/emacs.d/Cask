@@ -117,6 +117,7 @@
 (depends-on "smart-cursor-color")
 (depends-on "man-commands")
 (depends-on "achievements")
+(depends-on "undo-tree")
 
 ;; git
 (depends-on "gitattributes-mode")
