@@ -5,6 +5,10 @@
   (delete-trailing-whitespace))
 
 (defun shell-script-mode-setup ()
+  ;; indent
+  (setq tab-width 4)
+  (setq indent-tabs-mode t)
+
   (add-hook 'before-save-hook 'my-shell-script-before-save-hook))
 
 (add-hook 'shell-script-mode 'shell-script-mode-setup)
