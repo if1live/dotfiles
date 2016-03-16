@@ -10,7 +10,6 @@
   (setq php-mode-force-pear t)
 
   ;; indent
-  (setq c-default-style "stroustrup")
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
   (setq c-basic-indent 4)

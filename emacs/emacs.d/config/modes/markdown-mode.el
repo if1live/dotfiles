@@ -12,5 +12,5 @@
 (add-hook 'markdown-mode-hook
   (lambda ()
     (setq markdown-coding-system 'utf-8)
-    (setq-default tab-width 4)
-    (setq-default indent-tabs-mode nil)))
+    (setq tab-width 4)
+    (setq indent-tabs-mode nil)))
