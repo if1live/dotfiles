@@ -37,6 +37,7 @@
 (depends-on "markdown-toc")
 
 ;; ide
+(depends-on "editorconfig")
 (depends-on "idle-highlight-mode")
 (depends-on "highlight-current-line")
 (depends-on "rainbow-delimiters")
