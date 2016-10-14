@@ -35,6 +35,7 @@
 ;; document
 (depends-on "markdown-mode")
 (depends-on "markdown-toc")
+(depends-on "toml-mode")
 
 ;; ide
 (depends-on "idle-highlight-mode")
