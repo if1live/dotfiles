@@ -24,6 +24,8 @@ function install_core {
 
 	# mosh
 	sudo apt-get install -qq mosh
+
+	sudo apt-get install editorconfig
 }
 
 function install_core_util {

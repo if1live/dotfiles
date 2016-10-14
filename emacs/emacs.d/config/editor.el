@@ -54,6 +54,10 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; editorconfig
+;; https://github.com/editorconfig/editorconfig-emacs
+(editorconfig-mode 1)
+
 ;;;;;;
 ;; vcs
 (setq

@@ -38,6 +38,7 @@
 (depends-on "toml-mode")
 
 ;; ide
+(depends-on "editorconfig")
 (depends-on "idle-highlight-mode")
 (depends-on "highlight-current-line")
 (depends-on "rainbow-delimiters")
