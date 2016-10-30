@@ -50,7 +50,7 @@ function Zsh::init {
 		node npm grunt coffee
 		pip python fabric
 		ruby rails
-		thefuck
+		#thefuck
 	)
 
 	source $ZSH/oh-my-zsh.sh
@@ -147,11 +147,13 @@ function Shell::init {
 	# ssh
 	export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-	source ~/.autoenv/activate.sh
+	if [ -f "~/.autoenv/" ]; then
+	    source ~/.autoenv/activate.sh
+	fi
 
 	# the fuck
 	# https://github.com/nvbn/thefuck
-	eval "$(thefuck --alias)"
+	# eval "$(thefuck --alias)"
 
 	# less + syntax highlight
 	# http://superuser.com/questions/117841/get-colors-in-less-command
