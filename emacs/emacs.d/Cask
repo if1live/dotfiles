@@ -108,7 +108,8 @@
 (depends-on "io-mode")
 (depends-on "erlang")
 (depends-on "clojure-mode")
-(depends-on "scala-mode2")
+;; Some dependencies were not available: scala-mode2
+;; (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
 (depends-on "csharp-mode")
 (depends-on "php-mode")
