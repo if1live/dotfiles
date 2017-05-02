@@ -526,7 +526,7 @@ function Dotfiles::update {
 	fi
 }
 
-
+cd ~
 Zsh::init
 Dotfiles::init
 Shell::init
