@@ -107,6 +107,7 @@
 ;; etc language
 (depends-on "io-mode")
 (depends-on "erlang")
+(depends-on "elixir-mode")
 (depends-on "clojure-mode")
 ;; Some dependencies were not available: scala-mode2
 ;; (depends-on "scala-mode2")
