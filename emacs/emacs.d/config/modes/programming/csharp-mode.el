@@ -15,7 +15,10 @@
   ;; etc
   (electric-pair-mode 1)
 
+  (setq omnisharp-server-executable-path "~/bin/omnisharp/OmniSharp")
+
   ;; hook
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 (add-hook 'csharp-mode-hook 'csharp-mode-setup)
+(add-hook 'csharp-mode-hook 'omnisharp-mode)

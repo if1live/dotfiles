@@ -99,6 +99,10 @@
 ;; rust
 (depends-on "rust-mode")
 
+;; c#
+(depends-on "omnisharp")
+(depends-on "csharp-mode")
+
 ;; java
 (depends-on "jdee")
 ;; require emacs 24.4
@@ -112,7 +116,6 @@
 ;; Some dependencies were not available: scala-mode2
 ;; (depends-on "scala-mode2")
 (depends-on "dockerfile-mode")
-(depends-on "csharp-mode")
 (depends-on "php-mode")
 
 ;; shell
