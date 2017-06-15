@@ -406,6 +406,15 @@ function Python::init {
 	fi
 }
 
+function Rust::init {
+	if [[ -s $HOME/.cargo/env ]]; then
+		source $HOME/.cargo/env
+
+		cargo_version=$(cargo version 2>&1 > /dev/null | head -n 1 | sed 's/cargo //g')
+		echo "cargo version : $cargo_version"
+	fi
+}
+
 function Emacs::init {
 	export PATH="$HOME/.cask/bin:$PATH"
 }
@@ -548,6 +557,7 @@ Ruby::init
 Python::init
 Nodejs::init
 Go::init
+Rust::init
 
 Local::init
 
