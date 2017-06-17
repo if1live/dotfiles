@@ -150,6 +150,7 @@
 (depends-on "undo-tree")
 (depends-on "popwin")
 (depends-on "multiple-cursors")
+(depends-on "nginx-mode")
 
 ;; A smart M-x enhancement for Emacs.
 (depends-on "smex")
