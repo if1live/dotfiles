@@ -69,6 +69,11 @@
 (depends-on "less-css-mode")
 (depends-on "jsx-mode")
 
+;; rust
+(depends-on "rust-mode")
+(depends-on "racer")
+(depends-on "cargo")
+
 ;; python
 (depends-on "jinja2-mode")
 (depends-on "jedi")
@@ -151,6 +156,7 @@
 (depends-on "popwin")
 (depends-on "multiple-cursors")
 (depends-on "nginx-mode")
+(depends-on "ert-runner")
 
 ;; A smart M-x enhancement for Emacs.
 (depends-on "smex")
