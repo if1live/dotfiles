@@ -8,7 +8,8 @@ function Zsh::init {
 	# time that oh-my-zsh is loaded.
 	#ZSH_THEME="gianu"
 	#ZSH_THEME="cypher"
-	ZSH_THEME="rkj"
+	#ZSH_THEME="rkj"
+	ZSH_THEME="candy"
 
 	# Set this to use case-sensitive completion
 	# CASE_SENSITIVE="true"
@@ -146,6 +147,9 @@ function Shell::init {
 
 	# ssh
 	export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+	export LC_ALL=ko_KR.UTF-8
+	export LANG=ko_KR.UTF-8
 
 	if [ -f "~/.autoenv/" ]; then
 	    source ~/.autoenv/activate.sh
