@@ -2,7 +2,11 @@
 awesome -> {{HOME}}/.config/awesome
 
 # emacs
-emacs/emacs.d -> {{HOME}}/.emacs.d
+# emacs/emacs.d -> {{HOME}}/.emacs.d
+
+# spacemacs
+spacemacs/spacemacs -> {{HOME}}/.spacemacs
+spacemacs/spacemacs.d -> {{HOME}}/.spacemacs.d
 
 # git
 git/gitconfig -> {{HOME}}/.gitconfig
