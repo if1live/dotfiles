@@ -25,7 +25,8 @@ function install_core {
 	# mosh
 	sudo apt-get install -qq mosh
 
-	sudo apt-get install editorconfig
+	sudo apt-get install -qq editorconfig
+	sudo apt-get install -qq bison
 }
 
 function install_core_util {
@@ -172,6 +173,14 @@ function install_emacs {
 	cask
 }
 
+function install_spacemacs {
+	if [ ! -d "$HOME/.emacs.d" ]; then
+		git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	else
+		echo ".emacs.d already exist"
+	fi
+}
+
 function install_gvm {
 	if [ ! -d "$HOME/.gvm" ]; then
 		bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -220,6 +229,10 @@ case "$1" in
 		echo "# Install emacs"
 		install_emacs
 		;;
+	"spacemacs")
+		echo "# Install spacemacs"
+		install_spacemacs
+		;;
 	"nvm")
 		echo "# Install nvm"
 		install_nvm
@@ -254,6 +267,7 @@ case "$1" in
 		echo "rbenv"
 		echo "pyenv"
 		echo "emacs"
+		echo "spacemacs"
 		echo "nvm"
 		echo "gvm"
 		echo "go"
