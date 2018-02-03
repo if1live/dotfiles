@@ -74,10 +74,11 @@ function System::release_name {
 
 		if [[ $DIST_NAME == "" ]]; then
 			DIST_FULLNAME="$CHROMEOS_RELEASE_DESCRIPTION"
+			export OS_TYPE="chromeos"
 		else
 			DIST_FULLNAME="$DIST_NAME $DIST_VERSION"
+			export OS_TYPE="linux"
 		fi
-		export OS_TYPE="linux"
 	elif [ -f $REDHAT_RELEASE_FILE ]; then
 		# centos
 		DIST_FULLNAME=`cat $REDHAT_RELEASE_FILE`
