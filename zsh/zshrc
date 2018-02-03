@@ -68,9 +68,15 @@ function System::release_name {
 
 	if [ -f $DEBIAN_RELEASE_FILE ]; then
 		# ubuntu, debian, etc
-		local DIST_NAME=`sed -n 's/^DISTRIB_ID=//p' $DEBIAN_RELEASE_FILE`
-		local DIST_VERSION=`sed -n 's/^DISTRIB_RELEASE=//p' $DEBIAN_RELEASE_FILE`
-		DIST_FULLNAME="$DIST_NAME $DIST_VERSION"
+		local DIST_NAME=$(sed -n 's/^DISTRIB_ID=//p' $DEBIAN_RELEASE_FILE)
+		local DIST_VERSION=$(sed -n 's/^DISTRIB_RELEASE=//p' $DEBIAN_RELEASE_FILE)
+		CHROMEOS_RELEASE_DESCRIPTION=$(sed -n 's/^CHROMEOS_RELEASE_DESCRIPTION=//p' $DEBIAN_RELEASE_FILE)
+
+		if [[ $DIST_NAME == "" ]]; then
+			DIST_FULLNAME="$CHROMEOS_RELEASE_DESCRIPTION"
+		else
+			DIST_FULLNAME="$DIST_NAME $DIST_VERSION"
+		fi
 		export OS_TYPE="linux"
 	elif [ -f $REDHAT_RELEASE_FILE ]; then
 		# centos
@@ -97,6 +103,8 @@ function System::environment {
 		ENV_NAME="Work"
 	elif [[ $USER == "pi" ]]; then
 		ENV_NAME="Raspberry Pi"
+	elif [[ $USER == "chronos" ]]; then
+		ENV_NAME="ChromeOS"
 	else
 		ENV_NAME="Home"
 	fi
@@ -444,6 +452,18 @@ function Travis::init {
 	[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 }
 
+function ChromeOS::init {
+	if [[ $OS_TYPE != "chromeos" ]]; then
+		return
+	fi
+
+	echo "## ChromeOS"
+	# for chromebrew
+	export MYHOME=/usr/local/myhome
+	export GOPATH=/usr/local/myhome/go
+	export PATH=$PATH:$GOPATH/bin:/usr/local/share/nodebrew/current/bin/
+}
+
 function MacOSX::init {
 	if [[ $OS_TYPE != "osx" ]]; then
 		return
@@ -548,6 +568,7 @@ System::display
 
 # OSX 초기화를 먼저 하지 않으면 brew로 문제 생길 가능성이 있다
 MacOSX::init
+ChromeOS::init
 
 Emacs::init
 Android::init
