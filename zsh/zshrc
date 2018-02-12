@@ -1,3 +1,8 @@
+function dotfiles::core::init {
+  DOTFILES=~/.dotfiles
+  export UPDATE_DOTFILES_DAYS=1
+}
+
 function Zsh::init {
 	# Path to your oh-my-zsh configuration.
 	ZSH=~/.oh-my-zsh
@@ -234,62 +239,8 @@ function Local::init {
 	echo ""
 }
 
-zmodload zsh/datetime
-
-function Dotfiles::init {
-	Dotfiles::update
-}
-
-function _current_epoch() {
-	echo $(( $EPOCHSECONDS / 60 / 60 / 24 ))
-}
-
-function Dotfiles::update_repo {
-	curr_path=$(pwd)
-	cd ~/.dotfiles
-	git pull origin master
-	cd $curr_path
-
-	Dotfiles::update_timestamp
-}
-function Dotfiles::update_timestamp {
-	echo "LAST_EPOCH=$(_current_epoch)" >! ~/.dotfiles-update
-}
-function Dotfiles::update {
-	# https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh
-
-	if [ -f ~/.dotfiles-update ]; then
-		. ~/.dotfiles-update
-
-		epoch_target=1
-
-		if [[ -z "$LAST_EPOCH" ]]; then
-			Dotfiles::update_timestamp && return 0;
-		fi
-
-		epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
-		if [ $epoch_diff -gt $epoch_target ]; then
-			if [ "$DISABLE_UPDATE_PROMPT" = "true" ]; then
-				_upgrade_zsh
-			else
-				echo "[Dotfiles] Would you like to check for updates? [Y/n]: \c"
-				read line
-				if [ "$line" = Y ] || [ "$line" = y ] || [ -z "$line" ]; then
-					Dotfiles::update_repo
-				else
-					Dotfiles::update_timestamp
-				fi
-			fi
-		fi
-	else
-		# create the timestamp file
-		Dotfiles::update_timestamp
-	fi
-}
-
 cd ~
 Zsh::init
-Dotfiles::init
 Shell::init
 System::init
 System::display
@@ -306,6 +257,10 @@ for lib in $DOTFILES_LIBS_PATH/*.zsh; do
 done
 
 # initialize minimum lib
+
+# step 0. core
+dotfiles::core::init
+
 # step 1. system, os
 # OSX 초기화를 먼저 하지 않으면 brew로 문제 생길 가능성이 있다
 dotfiles::osx::init
@@ -317,6 +272,7 @@ dotfiles::docker::init
 dotfiles::travis::init
 dotfiles::heroku::init
 
+$DOTFILES/tools/check_for_upgrade.sh
 
 # 언어 관련 라이브러리 초기화는 필수 패키지에서 제외
 # * 모든 경우에 쓰이는게 아니다
