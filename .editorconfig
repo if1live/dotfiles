@@ -5,10 +5,10 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 charset = utf-8
 
-[*.sh]
+[*.{sh,zsh}]
 indent_style = space
 indent_size = 2
 
-[*.zsh]
+[zshrc]
 indent_style = space
 indent_size = 2

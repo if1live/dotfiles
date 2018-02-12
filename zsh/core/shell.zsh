@@ -2,11 +2,15 @@ function dotfiles::shell::init {
 
 }
 
+local paths=(
+  $HOME/bin
+  $HOME/.local/bin
+)
+for p in ${paths[@]}; do
+  PATH=$PATH:$p
+done
 
-# User configuration
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/bin:$PATH"
 
 # # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
