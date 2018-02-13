@@ -5,6 +5,7 @@ function dotfiles::shell::init {
 local paths=(
   $HOME/bin
   $HOME/.local/bin
+  $HOME/.yarn/bin
 )
 for p in ${paths[@]}; do
   PATH=$PATH:$p
