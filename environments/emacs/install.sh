@@ -5,5 +5,5 @@ else
 fi
 
 cd "$HOME/.emacs.d"
-cask
+Cask
 cd -

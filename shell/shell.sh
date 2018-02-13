@@ -32,10 +32,6 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 export LC_ALL=ko_KR.UTF-8
 export LANG=ko_KR.UTF-8
 
-# the fuck
-# https://github.com/nvbn/thefuck
-# eval "$(thefuck --alias)"
-
 # less + syntax highlight
 # http://superuser.com/questions/117841/get-colors-in-less-command
 export LESS='-R'

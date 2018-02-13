@@ -2,28 +2,41 @@
 
 My dotfiles
 
-## Install
+## install
+
+### clone repository
+
 ```bash
-# install
 git clone git@github.com:if1live/dotfiles.git
 or
 git clone https://github.com/if1live/dotfiles.git
+```
 
-# install basic environment
-./bootstrap.sh
-./bootstrap.sh oh-my-zsh
-./bootstrap.sh rbenv
-...(many bootstrap.sh option exist)
+### create dotfile symbolic link
 
-# set up virtualenv
+```bash
 virtualenv .venv
-. .venv/base/bin/activate
+. .venv/bin/activate
 
-# create dotfile symbolic link
 pip install -r requirements.txt
 python -m easylinker.cli meta-core.txt
+```
 
-# emacs package
-cd ~/.emacs.d
-Cask
+
+### install default packages
+
+```bash
+./install/core.sh
+./install/utils.sh
+...
+./install/other-script.sh
+```
+
+### install environments
+
+```bash
+./environment/thefuck/install.sh
+./environment/heroku/install.sh
+...
+./environment/other-env/install.sh
 ```
