@@ -25,7 +25,7 @@ tmux/tmux.conf -> {{HOME}}/.tmux.conf
 vim/vimrc -> {{HOME}}/.vimrc
 
 # zsh
-zsh/zshrc -> {{HOME}}/.zshrc
+shell/zshrc -> {{HOME}}/.zshrc
 
 # rtorrent
 rtorrent/rtorrent.rc -> {{HOME}}/.rtorrent.rc

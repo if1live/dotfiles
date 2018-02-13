@@ -5,14 +5,6 @@ ANDROID_ROOT_DIR_LIST=(
   /usr/local/opt
 )
 
-function dotfiles::android::init {
-  dotfiles::android::sdk_init
-  dotfiles::android::ndk_init
-  dotfiles::android::ccache
-
-  dotfiles::android::display
-}
-
 function dotfiles::android::sdk_init {
   dotfiles::android::set_sdk_dir ""
   ANDROID_SDK_NAME_LIST=(
@@ -131,3 +123,9 @@ function dotfiles::android::setup {
   # for x86_64 + android sdk
   sudo apt-get install lib32stdc++6 lib32z1
 }
+
+
+dotfiles::android::sdk_init
+dotfiles::android::ndk_init
+dotfiles::android::ccache
+dotfiles::android::display

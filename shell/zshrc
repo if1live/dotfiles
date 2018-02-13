@@ -1,0 +1,44 @@
+DOTFILES=~/.dotfiles
+
+# 초기화 순서를 강제
+CORE_LIBS=(
+  zsh
+  dotfiles
+  os
+  shell
+  alias
+  local
+)
+for lib in ${CORE_LIBS[@]}; do
+  source $DOTFILES/shell/$lib.sh
+  dotfiles::$lib::init
+done
+
+ENV_LIBS=(
+  # system, os
+  # OSX 초기화를 먼저 하지 않으면
+  # brew로 문제 생길 가능성이 있다
+  osx
+  chrome-os
+
+  # application
+  emacs
+  docker
+  travis
+  heroku
+
+  # language
+  # 언어 관련 라이브러리 초기화는 필수 패키지에서 제외
+  # * 모든 경우에 쓰이는게 아니다
+  # * 옛날에는 nvm, gvm같은거 썻는데 귀찮아서 apt-get 통해 설치하기 시작
+  # * 쉘 새로 뜰때마다 실행하기에는 초기화가 느리다
+  # env는 있으니 lib는 필요할떄 직접 호출하자
+)
+for lib in ${ENV_LIBS[@]}; do
+  source $DOTFILES/environments/$lib/activate.sh
+done
+
+$DOTFILES/tools/check_for_upgrade.sh
+
+# complete, show login message
+echo "Hello, $USER."

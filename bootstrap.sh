@@ -97,71 +97,6 @@ function install_oh_my_zsh {
 	git clone https://github.com/yonchu/grunt-zsh-completion.git "$OHMYZSH_CUSTOM_PLUGIN_PATH/grunt"
 }
 
-function install_nvm {
-	git clone https://github.com/creationix/nvm.git ~/.nvm
-	cd ~/.nvm
-	git checkout `git describe --abbrev=0 --tags`
-	. ~/.nvm/nvm.sh
-	cd -
-
-	# install default nodejs
-	nvm install node
-	nvm alias default node
-}
-
-function install_pyenv {
-	# http://stackoverflow.com/questions/12806122/missing-python-bz2-module
-	# 추가 패키지를 설치하지 않으면 python 3.4.3 설치중 에러가 뜬다
-	# WARNING: The Python bz2 extension was not compiled. Missing the bzip2 lib?
-	sudo apt-get install -qq libbz2-dev
-	#sudo yum install libbz2-devel // or bzip2-devel
-
-	[ -z "$PYENV_ROOT" ] && export PYENV_ROOT="$HOME/.pyenv"
-
-	if [ ! -d $PYENV_ROOT ]; then
-		git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
-	else
-		echo "rbenv already exist"
-	fi
-
-	# pyenv + virtualenv 충돌 해결용
-	# https://github.com/yyuu/pyenv-virtualenv
-	git clone https://github.com/yyuu/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
-}
-
-function install_rbenv {
-	# https://gorails.com/setup/ubuntu/14.04
-	sudo apt-get install -qq git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
-
-	[ -z "$RBENV_ROOT" ] && export RBENV_ROOT="$HOME/.rbenv"
-
-	if [ ! -d $RBENV_ROOT ]; then
-		git clone git://github.com/sstephenson/rbenv.git $RBENV_ROOT
-	else
-		echo "rbenv already exist"
-	fi
-
-	local RUBY_BUILD_PATH="$RBENV_ROOT/plugins/ruby-build"
-	if [ ! -d $RUBY_BUILD_PATH ]; then
-		git clone git://github.com/sstephenson/ruby-build.git $RUBY_BUILD_PATH
-	else
-		echo "ruby-build already exist"
-	fi
-
-	# https://github.com/rkh/rbenv-update
-	mkdir -p "$RBENV_ROOT/plugins"
-	local RBENV_UPDATE_PATH="$RBENV_ROOT/plugins/rbenv-update"
-	if [ ! -d $RUBY_BUILD_PATH ]; then
-		git clone https://github.com/rkh/rbenv-update.git $RBENV_UPDATE_PATH
-	else
-		echo "rbenv-update already exist"
-	fi
-}
-
-function install_autoenv {
-	git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
-}
-
 function install_emacs {
 	if [ ! -d "$HOME/.cask" ]; then
 		curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
@@ -181,13 +116,6 @@ function install_spacemacs {
 	fi
 }
 
-function install_gvm {
-	if [ ! -d "$HOME/.gvm" ]; then
-		bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-	else
-		echo "gvm already exist"
-	fi
-}
 
 function install_go {
 	go get -u github.com/nsf/gocode
@@ -217,14 +145,6 @@ case "$1" in
 		echo "# Install oh-my-zsh"
 		install_oh_my_zsh
 		;;
-	"rbenv")
-		echo "# Install rbenv"
-		install_rbenv
-		;;
-	"pyenv")
-		echo "# Install pyenv"
-		install_pyenv
-		;;
 	"emacs")
 		echo "# Install emacs"
 		install_emacs
@@ -233,21 +153,9 @@ case "$1" in
 		echo "# Install spacemacs"
 		install_spacemacs
 		;;
-	"nvm")
-		echo "# Install nvm"
-		install_nvm
-		;;
-	"gvm")
-		echo "# Install gvm"
-		install_gvm
-		;;
 	"go")
 		echo "# Instal go development env"
 		install_go
-		;;
-	"autoenv")
-		echo "# Install autoenv"
-		install_autoenv
 		;;
 	"cpp_dev")
 		echo "# Install c++ dev"
@@ -264,14 +172,9 @@ case "$1" in
 		echo "core_emacs"
 		echo "linm"
 		echo "oh-my-zsh"
-		echo "rbenv"
-		echo "pyenv"
 		echo "emacs"
 		echo "spacemacs"
-		echo "nvm"
-		echo "gvm"
 		echo "go"
-		echo "autoenv"
 		echo "cpp_dev"
 		echo "web_dev"
 		;;
