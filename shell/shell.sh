@@ -3,6 +3,7 @@ function dotfiles::shell::init {
 }
 
 local paths=(
+  /usr/lib/go-1.9/bin/
   $HOME/bin
   $HOME/.local/bin
   $HOME/.yarn/bin
