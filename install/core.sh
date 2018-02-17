@@ -15,3 +15,6 @@ sudo apt-get install -qq python3-pip
 # for less filter
 # install locally
 pip3 install --user Pygments
+
+sudo apt-get install software-properties-common python-software-properties
+

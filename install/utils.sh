@@ -20,6 +20,12 @@ packages=(
 
   editorconfig
   bison
+  
+  # editor
+  vim-nox
+  emacs-nox
+
+  tmux
 )
 
 for pkg in ${packages[@]}; do
