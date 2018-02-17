@@ -41,6 +41,7 @@ values."
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
+     vimscript
      git
      markdown
      ;; org
@@ -60,8 +61,10 @@ values."
      elixir
      java
      javascript
+     typescript
      yaml
      html
+     csv
      python
      racket
      ruby
