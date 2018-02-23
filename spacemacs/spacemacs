@@ -126,7 +126,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'vim
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -340,6 +340,13 @@ you should place your code here."
   ;; http://spacemacs.org/doc/FAQ.html#orgheadline34
   ;; 2.16 Make copy/paste working with the mouse in X11 terminals?
   (xterm-mouse-mode -1)
+
+  ;; 한글로 입력되었을때 우회하는 더 좋은 방법 없나?
+  ;; 하드코딩하는 방식 버린 이유
+  ;; 1. ㅗ + ㅣ 를 연속으로 입력하면 ㅚ 로 인식한다. 낱개로 인식하지 않더라.
+  ;; 2. 명령창에 입력 뜨는게 거슬린다
+  ;; 이 방식은 안쓸거같지만 삽질 백업용으로 남김
+  ;; (define-key evil-normal-state-map (kbd "ㅣ") 'evil-forward-char)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
