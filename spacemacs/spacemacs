@@ -38,7 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      ;; helm
      ivy
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
      vimscript
@@ -61,7 +61,8 @@ values."
      elixir
      java
      javascript
-     typescript
+     (typescript :variables
+                 typescript-fmt-on-save t)
      yaml
      html
      csv
