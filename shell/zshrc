@@ -23,6 +23,7 @@ ENV_LIBS=(
 
   # utils
   thefuck
+  asdf
 
   # application
   emacs
