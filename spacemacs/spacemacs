@@ -53,7 +53,9 @@ values."
      version-control
 
      ;; language
-     go
+     (go :variables
+         go-tab-width 4
+         gofmt-command "goimports")
      csharp
      clojure
      common-lisp
