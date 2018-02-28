@@ -51,6 +51,7 @@ values."
      ;; spell-checking
      ;; syntax-checking
      version-control
+     docker
 
      ;; language
      (go :variables
