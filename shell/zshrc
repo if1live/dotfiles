@@ -24,6 +24,7 @@ ENV_LIBS=(
   # utils
   thefuck
   asdf
+  autoenv
 
   # application
   emacs

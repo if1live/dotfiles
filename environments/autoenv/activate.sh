@@ -1,3 +1,3 @@
-if [ -f "~/.autoenv/" ]; then
+if [ -d $HOME/.autoenv/ ]; then
 	source ~/.autoenv/activate.sh
 fi
