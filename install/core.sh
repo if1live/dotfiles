@@ -17,4 +17,3 @@ sudo apt-get install -qq python3-pip
 pip3 install --user Pygments
 
 sudo apt-get install software-properties-common python-software-properties
-

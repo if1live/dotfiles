@@ -2,6 +2,7 @@ function dotfiles::alias::init() {
 
 }
 
+alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
@@ -10,22 +11,8 @@ alias cd......='cd ../../../../..'
 # cls is dos command. but it is short than clear.
 alias cls='clear'
 
-alias emasc='emacs'
-alias e='emacs'
-
 # use color
 alias less='less -R'
-
-# apt-get install ack-grep
-# linux : ack-grep
-# osx : ack
-unalias ack 2> /dev/null
-ack_exist=$(which ack > /dev/null 2> /dev/null; echo $?)
-ack_grep_exist=$(which ack-grep > /dev/null 2> /dev/null; echo $?)
-if [[ $ack_grep_exist == "0" ]] && [[ $ack_exist != "0" ]]; then
-	echo "[Shell]\t ack-grep found, ack not found => enable ack alias"
-	alias ack='ack-grep'
-fi
 
 alias ipconfig='ifconfig'
 
@@ -41,3 +28,15 @@ fi
 
 alias py2='python2'
 alias py3='python3'
+
+# https://dev.to/sobolevn/instant-100-command-line-productivity-boost
+# https://github.com/sobolevn/dotfiles/
+alias la="exa -abghl --git --color=automatic"
+
+# `cat` with beautiful colors. requires: pip install -U Pygments
+alias c='pygmentize -O style=borland -f console256 -g'
+
+# Bell when the program is finished. It is useful for some
+# time-consuming operations. Like:
+# > npm install && alert
+alias alert="tput bel"
