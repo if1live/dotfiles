@@ -26,6 +26,7 @@ ENV_LIBS=(
   asdf
   autoenv
   linuxbrew
+  fzf
 
   # application
   emacs
