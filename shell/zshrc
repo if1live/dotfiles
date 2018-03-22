@@ -25,6 +25,7 @@ ENV_LIBS=(
   thefuck
   asdf
   autoenv
+  linuxbrew
 
   # application
   emacs
