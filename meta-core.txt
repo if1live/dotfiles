@@ -40,3 +40,8 @@ less/lessfilter -> {{HOME}}/.lessfilter
 
 # visual studio code
 osx: vs_code/settings.json -> {{HOME}}/Library/Application Support/Code/User/settings.json
+
+# fzf
+fzf/fzf.bash -> {{HOME}}/.fzf.bash
+fzf/fzf.zsh -> {{HOME}}/.fzf.zsh
+
