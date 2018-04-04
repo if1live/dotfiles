@@ -41,3 +41,6 @@ export LANG=ko_KR.UTF-8
 # http://superuser.com/questions/117841/get-colors-in-less-command
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
+
+eval $(dircolors -b ~/.dotfiles/LS_COLORS/LS_COLORS)
+
