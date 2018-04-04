@@ -26,6 +26,9 @@ packages=(
   emacs-nox
 
   tmux
+
+  # rust 관련 패키지 설치할때 의존성 걸린거
+  cmake
 )
 
 for pkg in ${packages[@]}; do
@@ -33,3 +36,10 @@ for pkg in ${packages[@]}; do
   sudo apt-get install -qq $pkg
 done
 
+rust_utils=(
+  exa
+)
+for x in ${rust_utils[@]}; do
+  echo "install $x"
+  cargo install $x
+done
