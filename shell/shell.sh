@@ -4,6 +4,7 @@ function dotfiles::shell::init {
 
 local paths=(
   /usr/lib/go-1.9/bin/
+  /usr/lib/go-1.10/bin/
   $HOME/.bin
   $HOME/go/bin
   $HOME/bin
