@@ -16,4 +16,6 @@ sudo apt-get install -qq python3-pip
 # install locally
 pip3 install --user Pygments
 
-sudo apt-get install software-properties-common python-software-properties
+# 16.04 python-software-properties
+# 18.04 software-properties-common
+sudo apt-get install software-properties-common software-properties-common
