@@ -40,6 +40,8 @@ ENV_LIBS=(
   # * 옛날에는 nvm, gvm같은거 썻는데 귀찮아서 apt-get 통해 설치하기 시작
   # * 쉘 새로 뜰때마다 실행하기에는 초기화가 느리다
   # env는 있으니 lib는 필요할떄 직접 호출하자
+  # 실행이 충분히 빠른건 그냥 넣어도 될거같다
+  rustup
 )
 for lib in ${ENV_LIBS[@]}; do
   source $DOTFILES/environments/$lib/activate.sh
