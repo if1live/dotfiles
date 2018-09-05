@@ -5,6 +5,8 @@
 
 # locale
 sudo locale-gen ko_KR.UTF-8
+# for linuxbrew
+sudo locale-gen en_US.UTF-8
 
 # git
 sudo apt-get install -qq git
