@@ -1,0 +1,19 @@
+set tabstop=2      " 탭 문자를 2칸으로 보여줌
+set shiftwidth=2   " 자동 들여쓰기나 >>, << 명령 시 2칸 이동
+set softtabstop=2  " 탭 키를 누를 때 2칸 이동하게 함
+set expandtab      " 탭(Tab) 문자를 공백(Space)으로 변환
+set number         " 줄 번호를 표시함
+
+" 구문 강조 활성화
+syntax on
+filetype plugin indent on  " 파일 종류를 자동으로 인식하여 그에 맞는 설정 적용
+
+" 컬러 스킴 설정 (원하는 테마로 변경 가능)
+colorscheme desert
+
+" 현재 커서가 있는 줄에 밑줄 표시 (가독성 향상)
+set cursorline
+
+" 검색 결과 하이라이트
+set hlsearch
+
