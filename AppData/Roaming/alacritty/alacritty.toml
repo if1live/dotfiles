@@ -1,0 +1,10 @@
+# %APPDATA%\alacritty\alacritty.toml
+# HOME 경로로 실행하려면 단축아이콘 바꾸는게 나을듯
+# 설정파일에서는 $HOME 못쓴다니까
+# alacritty.exe --working-directory "%USERPROFILE%"
+
+[terminal]
+shell = { program = "C:\\Program Files\\Git\\bin\\bash.exe", args = ["--login", "-i"] }
+
+[env]
+TERM = "xterm-256color"
