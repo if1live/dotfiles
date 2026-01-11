@@ -3,3 +3,5 @@
 AppData
 {{ end }}
 
+README.md
+bin

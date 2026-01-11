@@ -1,0 +1,3 @@
+#!/bin/bash
+# cc: C Compiler
+exec zig cc "$@"

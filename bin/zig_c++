@@ -1,0 +1,3 @@
+#!/bin/bash
+# c++: C++ Compiler
+exec zig c++ "$@"
