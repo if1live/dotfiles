@@ -1,0 +1,3 @@
+#!/bin/bash
+# ar: Archiver
+exec anyzig 0.15.2 ar "$@"
