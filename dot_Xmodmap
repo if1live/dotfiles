@@ -1,0 +1,16 @@
+! 1. 기존 수식 키(Modifier) 설정 초기화
+clear Control
+clear Mod4
+
+! 2. 키코드 재할당
+! Super_L(133)을 Control_L로
+keycode 133 = Control_L
+! Control_L(37)을 ISO_Level3_Shift로
+keycode 37 = ISO_Level3_Shift
+! ISO_Level3_Shift(108)를 Hangul로
+keycode 108 = Hangul
+
+! 3. 수식 키 다시 정의
+add Control = Control_L
+! Super 키(Mod4)가 더 필요하다면 다른 키를 할당해야 하지만, 일단 초기화만 유지합니다.
+
