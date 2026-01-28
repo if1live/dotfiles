@@ -1,0 +1,22 @@
+xkb_keymap {
+    xkb_keycodes  { include "evdev+aliases(qwerty)" };
+    xkb_types     { include "complete" };
+    xkb_compat    { include "complete" };
+    xkb_symbols   {
+        include "pc+kr+inet(chromebook)"
+
+        // symbol name /usr/share/X11/xkb/keycodes/evdev
+        key <LCTL> { [ ISO_Level3_Shift ] };
+        key <LWIN> { [ Control_L ] };
+        key <RALT> { [ Hangul ] };
+        // key <RCTL> { [ Hangul_Hanja ] };
+
+        // modifier
+        // xkbwatch 사용해서 중복 modifier 있는지 확인할수 있음
+        // xmodmap -pm 으로 중복 플래그 확인 가능
+        modifier_map Control { <LWIN>, <RCTL> };
+        modifier_map Mod5 { <LCTL> };
+        modifier_map None { Super_L };
+    };
+    xkb_geometry  { include "pc(pc105)" };
+};
