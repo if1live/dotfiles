@@ -31,5 +31,7 @@ opt.listchars = {
   eol = '↵',        -- 줄 끝에 '↵' 기호 표시 (선택 사항)
 }
 
+-- golang lsp
 vim.lsp.enable('gopls')
+vim.lsp.enable('gleam')
 
