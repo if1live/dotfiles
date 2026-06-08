@@ -4,6 +4,5 @@ AppData
 {{ end }}
 
 README.md
-bin
-misc
+backup
 
