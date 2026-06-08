@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Xkbcomp Autostart
+Comment=Apply custom keymapo on XFCE startup
+Exec=sh -c "sleep 3 && xkbcomp /home/goyusia/.Xkeymap :0"
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
+
